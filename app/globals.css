@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #07080a;
+    --bg-surface: #0f1117;
+    --bg-card: #151821;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(96, 165, 250, 0.5);
+    --accent-icy: #60a5fa;
+    --accent-violet: #818cf8;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  ::selection {
+    background-color: rgba(96, 165, 250, 0.25);
+    color: #ffffff;
+  }
+}
+
+.glass-panel {
+  background: rgba(15, 17, 23, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent-icy);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
