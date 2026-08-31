@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CONTACT_INFO } from '@/content/contact';
 
 export function Footer() {
   const currentYear = 2026;
@@ -27,9 +28,9 @@ export function Footer() {
 
           <div className="flex flex-col gap-2">
             <span className="text-gray-600 font-semibold text-[10px] tracking-widest uppercase">Connect</span>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">GitHub</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">LinkedIn</a>
-            <a href="mailto:contact@hariom.dev" className="hover:text-gray-200 transition-colors">Email</a>
+            <a href={CONTACT_INFO.githubUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">GitHub</a>
+            <a href={CONTACT_INFO.linkedinUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gray-200 transition-colors">LinkedIn</a>
+            <a href={`mailto:${CONTACT_INFO.email}`} className="hover:text-gray-200 transition-colors">Email</a>
           </div>
         </div>
       </div>
