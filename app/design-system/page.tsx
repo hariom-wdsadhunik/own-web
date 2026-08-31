@@ -250,7 +250,7 @@ export default function DesignSystemPage() {
         <div className="flex flex-wrap items-center gap-8">
           <TextLink href="#internal">Standard Inline Link</TextLink>
           <TextLink href="#work" arrow="right">View Selected Work</TextLink>
-          <TextLink href="https://github.com" isExternal arrow="up-right">GitHub Repository</TextLink>
+          <TextLink href="https://github.com/hariom-wdsadhunik" isExternal arrow="up-right">GitHub Profile</TextLink>
         </div>
       </section>
 

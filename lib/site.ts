@@ -6,7 +6,7 @@ export const SITE_CONFIG = {
   author: {
     name: 'Hari Om',
     email: 'contact@hariom.dev',
-    github: 'https://github.com/hariom',
+    github: 'https://github.com/hariom-wdsadhunik',
     linkedin: 'https://linkedin.com/in/hariom',
   },
   ogImage: '/og/default-og.png',

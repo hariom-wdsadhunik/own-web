@@ -30,8 +30,6 @@ export const PROJECTS: Project[] = [
       'Built using Next.js App Router, React Server Components for fast data fetching, and background queue workers for background domain enrichment.',
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'AI Pipeline'],
     deliverables: ['Product Architecture', 'Web Application UI', 'Enrichment API Pipeline'],
-    liveUrl: 'https://github.com/hariom',
-    githubUrl: 'https://github.com/hariom',
     status: 'In Development',
   },
   {
@@ -63,8 +61,6 @@ export const PROJECTS: Project[] = [
       'Leveraged HTML5 Canvas APIs, WebSockets for live data streaming, and custom React hooks to isolate chart re-renders from global UI layout updates.',
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Canvas API', 'WebSockets'],
     deliverables: ['Dashboard UI System', 'Canvas Charting Engine', 'Widget Layout System'],
-    liveUrl: 'https://github.com/hariom',
-    githubUrl: 'https://github.com/hariom',
     status: 'Production',
   },
   {
@@ -91,13 +87,11 @@ export const PROJECTS: Project[] = [
     approach:
       'Created an immersive 3D-feeling spatial timeline that allows visitors to scroll through digital eras, inspecting archived snapshots and nostalgic media fragments.',
     designNotes:
-      'Utilized cinematic dark mode, retro-futuristic typography, glassmorphic cards, and smooth scroll transitions to evoke a feeling of digital archaeology.',
+      'Utilized cinematic dark mode, retro-futuristic typography, glassmorphism cards, and smooth scroll transitions to evoke a feeling of digital archaeology.',
     engineeringNotes:
       'Built with Next.js, Motion physics, Web Audio API soundscapes, and structured JSON archive schemas for rapid client-side rendering.',
     techStack: ['Next.js', 'TypeScript', 'Motion', 'Tailwind CSS', 'Web Audio API'],
     deliverables: ['Spatial Timeline Interface', 'Digital Archive Schema', 'Audio Soundscape Engine'],
-    liveUrl: 'https://github.com/hariom',
-    githubUrl: 'https://github.com/hariom',
     status: 'Active Prototype',
   },
   {
@@ -129,8 +123,6 @@ export const PROJECTS: Project[] = [
       'Implemented in Node.js/TypeScript using event-driven WebSockets, streaming LLM outputs, and sandbox execution environments.',
     techStack: ['Node.js', 'TypeScript', 'LLM Function Calling', 'WebSockets', 'Tailwind CSS'],
     deliverables: ['Multi-Agent Architecture', 'Execution Stream UI', 'Memory State Engine'],
-    liveUrl: 'https://github.com/hariom',
-    githubUrl: 'https://github.com/hariom',
     status: 'Active Prototype',
   },
 ];

@@ -41,7 +41,7 @@ export function ContactCTA() {
             size="lg"
             icon={<ArrowRight className="w-4 h-4" />}
           >
-            VIEW GITHUB REPO
+            VIEW GITHUB PROFILE
           </Button>
         </div>
       </FadeIn>
