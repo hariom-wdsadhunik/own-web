@@ -2,6 +2,7 @@
 
 **Project:** Hari Om — Personal Portfolio Website  
 **Date:** August 31, 2026  
+**GitHub Repository:** https://github.com/hariom-wdsadhunik/own-web  
 **Target Platform:** Cloudflare Pages (Static HTML Export)  
 
 ---
@@ -15,7 +16,7 @@
 | Field | Configuration Value |
 | :--- | :--- |
 | **Framework preset** | Next.js (Static HTML Export) |
-| **Production branch** | `main` (or `master`) |
+| **Production branch** | `main` |
 | **Build command** | `npx next build` |
 | **Build output directory** | `out` |
 
@@ -25,7 +26,7 @@
 
 | Variable Name | Environment | Description | Example Value |
 | :--- | :--- | :--- | :--- |
-| `NEXT_PUBLIC_SITE_URL` | Production | Canonical domain override for sitemaps, robots, and OpenGraph URLs | `https://hariom.dev` |
+| `NEXT_PUBLIC_SITE_URL` | Production | Canonical domain override for sitemaps, robots, and OpenGraph URLs | Set to your actual Cloudflare custom domain |
 
 ---
 
