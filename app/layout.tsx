@@ -3,6 +3,7 @@ import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { MobileBottomNav } from '@/components/layout/MobileBottomNav';
 import { CinematicBackground } from '@/components/ui/CinematicBackground';
 import { PointerFollower } from '@/components/ui/PointerFollower';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
@@ -69,10 +70,11 @@ export default function RootLayout({
         <CinematicBackground />
         <PointerFollower />
         <Header />
-        <main className="flex-1 w-full pt-20">
+        <main className="flex-1 w-full pt-20 pb-20 md:pb-0">
           {children}
         </main>
         <Footer />
+        <MobileBottomNav />
       </body>
     </html>
   );
