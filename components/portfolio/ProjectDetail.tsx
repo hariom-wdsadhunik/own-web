@@ -19,40 +19,36 @@ export function ProjectDetail({ project, nextProject }: ProjectDetailProps) {
   const isCreative = project.department === 'creative';
 
   return (
-    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
+    <article className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8 sm:space-y-16">
+      {/* Compact Top Navigation Bar */}
       <FadeIn>
-        <Link
-          href="/work"
-          className="inline-flex items-center gap-2 font-mono text-xs tracking-wider text-gray-400 hover:text-white transition-colors group min-h-[44px]"
-        >
-          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          <span>BACK TO WORK DIRECTORY</span>
-        </Link>
+        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 font-display text-xs font-bold tracking-wider text-blue-400 hover:text-blue-300 transition-colors group min-h-[44px]"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <span>← BACK TO WORK</span>
+          </Link>
+
+          <span className="font-mono text-xs text-gray-500 uppercase tracking-widest">
+            {isCreative ? 'CREATIVE' : 'CLIENT'} // {project.category}
+          </span>
+        </div>
       </FadeIn>
 
-      <FadeIn className="space-y-6">
-        <div className="flex items-center gap-3 flex-wrap">
-          <Badge variant="icy" dot>{project.status}</Badge>
-          <Badge variant="outline">{project.year}</Badge>
-          <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
-            // {isCreative ? 'CREATIVE PROJECT' : 'CLIENT PROJECT'}
-          </span>
-          {project.client && (
-            <span className="font-mono text-xs text-emerald-400 uppercase tracking-widest">
-              • CLIENT: {project.client}
-            </span>
-          )}
-        </div>
-
-        <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+      {/* Project Title & Visual Anchor */}
+      <FadeIn className="space-y-4">
+        <h1 className="font-display text-3xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-tight">
           {project.title}
         </h1>
 
-        <p className="font-sans text-lg sm:text-xl text-gray-300 max-w-3xl leading-relaxed font-normal">
+        <p className="font-sans text-base sm:text-xl text-gray-300 max-w-3xl leading-relaxed font-normal">
           {project.tagline}
         </p>
       </FadeIn>
 
+      {/* Primary Project Visual */}
       <FadeIn>
         <ProjectGallery
           heroMedia={project.heroImage}
@@ -64,18 +60,19 @@ export function ProjectDetail({ project, nextProject }: ProjectDetailProps) {
         />
       </FadeIn>
 
+      {/* Metadata & Actions */}
       <FadeIn>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-8 rounded-xl bg-[#0f1117] border border-white/10 font-mono text-xs">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-6 p-6 sm:p-8 rounded-xl bg-[#0f1117] border border-white/10 font-mono text-xs">
           <div className="space-y-1">
-            <span className="text-gray-500 uppercase tracking-widest text-[10px]">Department &amp; Category</span>
-            <p className="text-gray-200 uppercase">{isCreative ? 'Creative Project' : 'Client Delivery'} / {project.category}</p>
+            <span className="text-gray-500 uppercase tracking-widest text-[10px]">Category</span>
+            <p className="text-gray-200 uppercase font-sans font-semibold">{project.category}</p>
           </div>
           <div className="space-y-1">
             <span className="text-gray-500 uppercase tracking-widest text-[10px]">Role</span>
             <p className="text-gray-200 font-sans">{project.role.join(' • ')}</p>
           </div>
           <div className="space-y-1">
-            <span className="text-gray-500 uppercase tracking-widest text-[10px]">Status &amp; Year</span>
+            <span className="text-gray-500 uppercase tracking-widest text-[10px]">Status</span>
             <p className="text-blue-400 font-semibold">{project.status} ({project.year})</p>
           </div>
           <div className="space-y-1">
@@ -91,60 +88,50 @@ export function ProjectDetail({ project, nextProject }: ProjectDetailProps) {
         </div>
       </FadeIn>
 
-      <div className="space-y-16 max-w-4xl">
-        <FadeIn className="space-y-4">
-          <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase">01 / OVERVIEW</h2>
-          <h3 className="font-display text-2xl font-bold text-white">Project Summary</h3>
-          <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
+      <div className="space-y-12 sm:space-y-16 max-w-4xl">
+        <FadeIn className="space-y-3">
+          <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase font-bold">01 / OVERVIEW</h2>
+          <h3 className="font-display text-xl sm:text-2xl font-bold text-white">Project Summary</h3>
+          <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed font-normal">
             {project.summary}
           </p>
         </FadeIn>
 
-        {project.brief && (
-          <FadeIn className="space-y-4 pt-8 border-t border-white/10">
-            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase">02 / THE CLIENT BRIEF</h2>
-            <h3 className="font-display text-2xl font-bold text-white">Commercial Objectives</h3>
-            <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
-              {project.brief}
-            </p>
-          </FadeIn>
-        )}
-
-        {project.problemStatement && !project.brief && (
-          <FadeIn className="space-y-4 pt-8 border-t border-white/10">
-            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase">02 / THE CHALLENGE</h2>
-            <h3 className="font-display text-2xl font-bold text-white">Problem Statement</h3>
-            <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
+        {project.problemStatement && (
+          <FadeIn className="space-y-3 pt-6 border-t border-white/10">
+            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase font-bold">02 / THE CHALLENGE</h2>
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-white">Problem Statement</h3>
+            <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed font-normal">
               {project.problemStatement}
             </p>
           </FadeIn>
         )}
 
         {project.approach && (
-          <FadeIn className="space-y-4 pt-8 border-t border-white/10">
-            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase">03 / PRODUCT THINKING</h2>
-            <h3 className="font-display text-2xl font-bold text-white">Approach &amp; Solution</h3>
-            <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
+          <FadeIn className="space-y-3 pt-6 border-t border-white/10">
+            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase font-bold">03 / PRODUCT THINKING</h2>
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-white">Approach &amp; Solution</h3>
+            <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed font-normal">
               {project.approach}
             </p>
           </FadeIn>
         )}
 
         {(project.designNotes || project.engineeringNotes) && (
-          <FadeIn className="space-y-8 pt-8 border-t border-white/10">
-            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase">04 / DESIGN &amp; ENGINEERING</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <FadeIn className="space-y-6 pt-6 border-t border-white/10">
+            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase font-bold">04 / ARCHITECTURE</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {project.designNotes && (
-                <div className="space-y-2 p-6 rounded-lg bg-white/[0.02] border border-white/10">
-                  <h4 className="font-display text-lg font-bold text-white">UI/UX &amp; Interaction</h4>
+                <div className="space-y-2 p-5 sm:p-6 rounded-lg bg-[#0f1117] border border-white/10">
+                  <h4 className="font-display text-base sm:text-lg font-bold text-white">UI/UX Architecture</h4>
                   <p className="font-sans text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
                     {project.designNotes}
                   </p>
                 </div>
               )}
               {project.engineeringNotes && (
-                <div className="space-y-2 p-6 rounded-lg bg-white/[0.02] border border-white/10">
-                  <h4 className="font-display text-lg font-bold text-white">Frontend Architecture</h4>
+                <div className="space-y-2 p-5 sm:p-6 rounded-lg bg-[#0f1117] border border-white/10">
+                  <h4 className="font-display text-base sm:text-lg font-bold text-white">Frontend Engineering</h4>
                   <p className="font-sans text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
                     {project.engineeringNotes}
                   </p>
@@ -154,31 +141,7 @@ export function ProjectDetail({ project, nextProject }: ProjectDetailProps) {
           </FadeIn>
         )}
 
-        {project.outcome && (
-          <FadeIn className="space-y-4 pt-8 border-t border-white/10">
-            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase">05 / VERIFIED OUTCOME</h2>
-            <div className="p-6 rounded-lg bg-[#0f1117] border border-emerald-400/30">
-              <p className="font-sans text-sm sm:text-base text-gray-200 leading-relaxed font-normal">
-                {project.outcome}
-              </p>
-            </div>
-          </FadeIn>
-        )}
-
-        {project.deliverables && (
-          <FadeIn className="space-y-4 pt-8 border-t border-white/10">
-            <h2 className="font-mono text-xs text-blue-400 tracking-widest uppercase">DELIVERABLES</h2>
-            <div className="flex flex-wrap gap-2">
-              {project.deliverables.map((item) => (
-                <Badge key={item} variant="icy">
-                  {item}
-                </Badge>
-              ))}
-            </div>
-          </FadeIn>
-        )}
-
-        <FadeIn className="pt-8 border-t border-white/10">
+        <FadeIn className="pt-6 border-t border-white/10">
           <ProjectLinks
             liveUrl={project.liveUrl}
             githubUrl={project.githubUrl}
@@ -189,19 +152,19 @@ export function ProjectDetail({ project, nextProject }: ProjectDetailProps) {
       <Divider variant="muted" />
 
       {nextProject && (
-        <FadeIn className="pt-8">
+        <FadeIn className="pt-4">
           <Link
             href={`/work/${nextProject.slug}`}
-            className="group block p-8 rounded-xl bg-[#0f1117] border border-white/10 hover:border-blue-400/40 transition-all space-y-2 text-right"
+            className="group block p-6 sm:p-8 rounded-xl bg-[#0f1117] border border-white/10 hover:border-blue-400/40 transition-all space-y-2 text-right"
           >
             <span className="font-mono text-xs text-gray-500 uppercase tracking-widest block">
               NEXT PROJECT ({nextProject.department.toUpperCase()}) →
             </span>
-            <h3 className="font-display text-3xl font-bold text-white group-hover:text-blue-300 transition-colors flex items-center justify-end gap-3">
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-white group-hover:text-blue-300 transition-colors flex items-center justify-end gap-3">
               <span>{nextProject.title}</span>
-              <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </h3>
-            <p className="font-mono text-xs text-gray-400">{nextProject.tagline}</p>
+            <p className="font-sans text-xs sm:text-sm text-gray-400 font-normal">{nextProject.tagline}</p>
           </Link>
         </FadeIn>
       )}

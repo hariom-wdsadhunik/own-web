@@ -16,6 +16,15 @@ const NAV_ITEMS = [
 export function MobileBottomNav() {
   const pathname = usePathname();
 
+  // Hide bottom navigation on detail routes (e.g. /work/[slug], /lab/[slug])
+  const isWorkDetail = pathname.startsWith('/work/') && pathname !== '/work';
+  const isLabDetail = pathname.startsWith('/lab/') && pathname !== '/lab';
+  const isNotFound = pathname === '/_not-found';
+
+  if (isWorkDetail || isLabDetail || isNotFound) {
+    return null;
+  }
+
   return (
     <nav
       className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-[#07080a]/95 backdrop-blur-xl border-t border-white/10 px-3 py-1.5 pb-[calc(0.375rem+env(safe-area-inset-bottom))] shadow-2xl select-none"
