@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#07080a"/>
+  <circle cx="950" cy="150" r="300" fill="#3b82f6" fill-opacity="0.15" filter="blur(80px)"/>
+  <rect x="80" y="80" width="1040" height="470" rx="24" fill="#0f1117" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
+  <text x="140" y="240" font-family="Space Grotesk, sans-serif" font-weight="bold" font-size="64" fill="#ffffff" letter-spacing="-2">HARI OM</text>
+  <text x="140" y="310" font-family="Space Grotesk, sans-serif" font-weight="bold" font-size="28" fill="#60a5fa" letter-spacing="4">PRODUCT THINKING // UI/UX ARCHITECTURE // WEB ENGINEERING</text>
+  <text x="140" y="400" font-family="Inter, sans-serif" font-size="22" fill="#9ca3af">Personal Portfolio &amp; Digital Product Engineering Workspace</text>
+  <text x="140" y="490" font-family="Space Grotesk, monospace" font-size="18" fill="#4b5563" letter-spacing="2">CINEMATIC FUTURISTIC PREMIUM</text>
+</svg>

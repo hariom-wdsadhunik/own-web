@@ -9,7 +9,7 @@ export const SITE_CONFIG = {
     github: 'https://github.com/hariom-wdsadhunik',
     linkedin: 'https://linkedin.com/in/hariom',
   },
-  ogImage: '/og/default-og.png',
+  ogImage: '/og/default-og.svg',
 };
 
 export function getSiteUrl(): string {

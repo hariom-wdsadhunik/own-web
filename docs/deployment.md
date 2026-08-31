@@ -1,41 +1,43 @@
-# Portfolio Deployment & Environment Specification
+# Portfolio Deployment & Cloudflare Pages Specification
 
 **Project:** Hari Om — Personal Portfolio Website  
 **Date:** August 31, 2026  
-**Target Platform:** Vercel (Edge Network / SSG)  
+**Target Platform:** Cloudflare Pages (Static HTML Export)  
 
 ---
 
-## 1. Environment Variables
+## 1. Cloudflare Pages Setup & GitHub Integration
 
-| Variable Name | Environment | Description | Required? | Default Value |
-| :--- | :--- | :--- | :--- | :--- |
-| `NEXT_PUBLIC_SITE_URL` | Production / Preview | Canonical production domain URL | Recommended | `https://hariom.dev` |
+1. Connect repository on Cloudflare Dashboard: `Workers & Pages` -> `Create application` -> `Pages` -> `Connect to Git`.
+2. Select GitHub Repository: `hariom-wdsadhunik/own-web`.
+3. **Build Settings Configuration:**
+
+| Field | Configuration Value |
+| :--- | :--- |
+| **Framework preset** | Next.js (Static HTML Export) |
+| **Production branch** | `main` (or `master`) |
+| **Build command** | `npx next build` |
+| **Build output directory** | `out` |
 
 ---
 
-## 2. Local Development & Build Commands
+## 2. Environment Variables
+
+| Variable Name | Environment | Description | Example Value |
+| :--- | :--- | :--- | :--- |
+| `NEXT_PUBLIC_SITE_URL` | Production | Canonical domain override for sitemaps, robots, and OpenGraph URLs | `https://hariom.dev` |
+
+---
+
+## 3. Local Development & Export Verification Commands
 
 ```bash
-# Install dependencies
-npm install
-
-# Run local development server
+# Development Server
 npm run dev
 
-# Production build test (Static Pre-rendering)
-npm run build
+# Static Export Build (Emits out/ directory)
+npx next build
 
-# Start production preview server
-npm run start
+# Preview static export build locally
+npx serve out
 ```
-
----
-
-## 3. Vercel Deployment Checklist
-
-1. **Framework Preset:** Next.js
-2. **Build Command:** `npm run build`
-3. **Output Directory:** Default (`.next`)
-4. **Node.js Version:** `v24.x` (or `v20.x+`)
-5. **Environment Configuration:** Set `NEXT_PUBLIC_SITE_URL=https://hariom.dev` in Vercel Project Settings.

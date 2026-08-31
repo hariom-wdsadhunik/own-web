@@ -3,6 +3,8 @@ import { getPublicProjects } from '@/lib/projects';
 import { EXPERIMENTS } from '@/content/experiments';
 import { getSiteUrl } from '@/lib/site';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = getSiteUrl();
   const currentDate = new Date().toISOString().split('T')[0];
