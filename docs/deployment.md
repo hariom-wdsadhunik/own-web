@@ -7,11 +7,22 @@
 
 ---
 
-## 1. Cloudflare Pages Setup & GitHub Integration
+> [!CAUTION]
+> **CRITICAL DEPLOYMENT INSTRUCTION:**
+> Do **NOT** use `npx wrangler deploy` or deploy as a Cloudflare Worker / OpenNext application.
+> Do **NOT** connect the repository to an existing Cloudflare Workers project (e.g. `hariomweb`).
+> 
+> This portfolio is intentionally built as a **static Next.js HTML Export** and must be deployed using **Cloudflare Pages**.
 
-1. Connect repository on Cloudflare Dashboard: `Workers & Pages` -> `Create application` -> `Pages` -> `Connect to Git`.
-2. Select GitHub Repository: `hariom-wdsadhunik/own-web`.
-3. **Build Settings Configuration:**
+---
+
+## 1. Cloudflare Pages Setup Procedure (New Pages Project)
+
+1. Open **[Cloudflare Dashboard](https://dash.cloudflare.com/)** $\rightarrow$ Navigate to **Workers & Pages**.
+2. Click **Create application** $\rightarrow$ Select **Pages** tab (do NOT select Workers).
+3. Click **Connect to Git** $\rightarrow$ Select GitHub account `hariom-wdsadhunik`.
+4. Select Repository: **`hariom-wdsadhunik/own-web`**.
+5. **Build Settings Configuration:**
 
 | Field | Configuration Value |
 | :--- | :--- |
@@ -20,25 +31,22 @@
 | **Build command** | `npx next build` |
 | **Build output directory** | `out` |
 
----
+6. **Environment Variables:**
+   - `NEXT_PUBLIC_SITE_URL` — Set to your actual Cloudflare Pages production URL (e.g. `https://own-web.pages.dev`).
 
-## 2. Environment Variables
-
-| Variable Name | Environment | Description | Example Value |
-| :--- | :--- | :--- | :--- |
-| `NEXT_PUBLIC_SITE_URL` | Production | Canonical domain override for sitemaps, robots, and OpenGraph URLs | Set to your actual Cloudflare custom domain |
+7. Click **Save and Deploy**. Cloudflare Pages will run `npm ci`, execute `npx next build`, and automatically serve the static `out/` HTML files.
 
 ---
 
-## 3. Local Development & Export Verification Commands
+## 2. Local Development & Export Commands
 
 ```bash
-# Development Server
+# Local Development Server
 npm run dev
 
-# Static Export Build (Emits out/ directory)
+# Static Export Build (Generates out/ directory)
 npx next build
 
-# Preview static export build locally
+# Preview static export locally
 npx serve out
 ```
