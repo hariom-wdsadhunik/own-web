@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getPublicCreativeProjects } from '@/lib/projects';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Badge } from '@/components/ui/Badge';
@@ -20,18 +20,10 @@ export function CreativeProjectsSection() {
           eyebrow="DEPARTMENT 01 // CREATIVE PROJECTS"
           title="Products, Experiments &amp; Explorations"
           description="Products, experiments and ideas I built to explore what digital experiences could become."
-          actionSlot={
-            <div className="hidden sm:flex items-center gap-3">
-              <Badge variant="icy">
-                <Sparkles className="w-3 h-3 text-blue-400 shrink-0 inline-block mr-1" />
-                <span>EXPLORATORY ARCHIVE</span>
-              </Badge>
-            </div>
-          }
         />
       </FadeIn>
 
-      <div className="space-y-20 sm:space-y-36">
+      <div className="space-y-16 sm:space-y-36">
         {creativeProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
@@ -42,13 +34,11 @@ export function CreativeProjectsSection() {
                   isEven ? '' : 'lg:flex-row-reverse'
                 }`}
               >
-                {/* Mobile Header / Title */}
-                <div className="lg:hidden space-y-2">
-                  <div className="flex items-center gap-2 font-mono text-xs text-blue-400 font-bold tracking-widest">
-                    <span>0{(idx + 1).toString()} / CREATIVE</span>
-                    <span className="text-gray-600">•</span>
-                    <span className="text-gray-400 uppercase">{project.category}</span>
-                  </div>
+                {/* Mobile Editorial Header */}
+                <div className="lg:hidden space-y-1">
+                  <span className="font-mono text-xs text-blue-400 font-bold tracking-widest block">
+                    0{(idx + 1).toString()}
+                  </span>
                   <h3 className="font-display text-3xl font-bold text-white tracking-tight">
                     <Link href={`/work/${project.slug}`}>{project.title}</Link>
                   </h3>
@@ -63,13 +53,23 @@ export function CreativeProjectsSection() {
                       category={project.category}
                       year={project.year}
                       status={project.status}
-                      className="w-full transition-all duration-700 ease-out group-hover/media:scale-[1.02] group-hover/media:shadow-2xl group-hover/media:shadow-blue-500/10"
+                      className="w-full rounded-xl overflow-hidden transition-all duration-700 ease-out group-hover/media:scale-[1.02] group-hover/media:shadow-2xl group-hover/media:shadow-blue-500/10"
                     />
                   </Link>
                 </div>
 
                 {/* Editorial Metadata & Context */}
-                <div className={`lg:col-span-5 space-y-4 sm:space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
+                <div className={`lg:col-span-5 space-y-3 sm:space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
+                  {/* Mobile Context & Category */}
+                  <div className="lg:hidden space-y-2">
+                    <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest block">
+                      {project.category}
+                    </span>
+                    <p className="font-sans text-sm text-gray-300 leading-relaxed font-normal">
+                      {project.tagline}
+                    </p>
+                  </div>
+
                   {/* Desktop Only Metadata */}
                   <div className="hidden lg:flex items-center gap-3 flex-wrap">
                     <span className="font-mono text-xs text-blue-400 font-bold tracking-widest">
@@ -80,7 +80,7 @@ export function CreativeProjectsSection() {
                     <span className="font-mono text-xs text-gray-500 uppercase">// {project.category}</span>
                   </div>
 
-                  {/* Desktop Only Title */}
+                  {/* Desktop Only Title & Summary */}
                   <div className="hidden lg:block space-y-3">
                     <h3 className="font-display text-4xl md:text-5xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
                       <Link href={`/work/${project.slug}`}>{project.title}</Link>
@@ -88,33 +88,24 @@ export function CreativeProjectsSection() {
                     <p className="font-sans text-lg text-gray-300 leading-relaxed font-normal">
                       {project.tagline}
                     </p>
-                  </div>
-
-                  {/* Mobile Tagline Summary */}
-                  <p className="lg:hidden font-sans text-sm text-gray-300 leading-relaxed font-normal">
-                    {project.tagline}
-                  </p>
-
-                  {/* Desktop Summary */}
-                  <p className="hidden lg:block font-sans text-sm text-gray-400 leading-relaxed line-clamp-3">
-                    {project.summary}
-                  </p>
-
-                  {/* Desktop Tech Badges */}
-                  <div className="hidden lg:flex flex-wrap gap-1.5 pt-2">
-                    {project.techStack.map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-[10px]">
-                        {tech}
-                      </Badge>
-                    ))}
+                    <p className="font-sans text-sm text-gray-400 leading-relaxed line-clamp-3">
+                      {project.summary}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {project.techStack.map((tech) => (
+                        <Badge key={tech} variant="outline" className="text-[10px]">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
                   </div>
 
                   <div className="pt-2 sm:pt-3">
                     <Link
                       href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-semibold tracking-wider min-h-[44px]"
+                      className="inline-flex items-center gap-2 font-display text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
                     >
-                      <span>EXPLORE CASE STUDY</span>
+                      <span>EXPLORE PROJECT</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>

@@ -1,84 +1,64 @@
 'use client';
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { FadeIn } from '@/components/motion/FadeIn';
-import { cn } from '@/lib/utils';
 
-const MANIFESTO_MODES = [
-  { id: 'design', label: 'DESIGN', statement: 'I shape interfaces, interactions, and design systems with extreme visual restraint.' },
-  { id: 'build', label: 'BUILD', statement: 'I turn complex technical requirements into high-performance web products.' },
-  { id: 'experiment', label: 'EXPERIMENT', statement: 'I explore AI workflows, generative interfaces, and creative technology.' },
+const MODES = [
+  { id: 'design', label: 'DESIGN', statement: 'I DESIGN SCALABLE SYSTEMS.' },
+  { id: 'build', label: 'BUILD', statement: 'I ENGINEER DIGITAL PRODUCTS.' },
+  { id: 'experiment', label: 'EXPERIMENT', statement: 'I TURN IDEAS INTO EXPERIENCES.' },
 ];
 
 export function StatementTransition() {
-  const [activeMode, setActiveMode] = useState('design');
+  const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="py-24 sm:py-36 bg-gradient-to-b from-transparent via-white/[0.015] to-transparent border-y border-white/10 overflow-hidden relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10 sm:space-y-14">
-        <FadeIn>
-          <span className="font-mono text-[10px] sm:text-xs tracking-widest text-blue-400 uppercase">
-            PHILOSOPHY // MANIFESTO
-          </span>
-        </FadeIn>
+    <section className="py-12 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-y border-white/10 text-center">
+      <FadeIn>
+        <div className="space-y-6 max-w-4xl mx-auto">
+          <p className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest">
+            // OPERATING PHILOSOPHY
+          </p>
 
-        {/* Desktop Editorial Statement View */}
-        <div className="hidden sm:block space-y-4 sm:space-y-6 max-w-5xl mx-auto font-display text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-tight">
-          <FadeIn delay={0.1}>
-            <p className="text-gray-500">I DON'T JUST MAKE WEBSITES.</p>
-          </FadeIn>
-          <FadeIn delay={0.2}>
-            <p className="text-gray-300">I DESIGN SCALABLE SYSTEMS.</p>
-          </FadeIn>
-          <FadeIn delay={0.3}>
-            <p className="text-white">I ENGINEER DIGITAL PRODUCTS.</p>
-          </FadeIn>
-          <FadeIn delay={0.4}>
-            <p className="text-blue-400">I TURN IDEAS INTO EXPERIENCES.</p>
-          </FadeIn>
-        </div>
-
-        {/* Dedicated Mobile Interactive View */}
-        <div className="sm:hidden space-y-6 max-w-xl mx-auto">
-          <h2 className="font-display text-2xl font-bold text-white tracking-tight">
-            I DON'T JUST MAKE WEBSITES.
+          <h2 className="font-display text-2xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight leading-tight">
+            I DON&apos;T JUST MAKE WEBSITES.
           </h2>
 
-          <div
-            role="tablist"
-            aria-label="Manifesto Mode Selector"
-            className="flex items-center justify-center gap-1.5 p-1.5 rounded-xl bg-[#0f1117] border border-white/10"
-          >
-            {MANIFESTO_MODES.map((mode) => {
-              const isActive = activeMode === mode.id;
-
-              return (
-                <button
-                  key={mode.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveMode(mode.id)}
-                  className={cn(
-                    'flex-1 min-h-[44px] py-2 px-3 rounded-lg font-mono text-xs tracking-widest transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-blue-400',
-                    isActive
-                      ? 'bg-blue-500 text-gray-950 font-bold shadow-md'
-                      : 'text-gray-400 hover:text-white hover:bg-white/5'
-                  )}
-                >
-                  {mode.label}
-                </button>
-              );
-            })}
+          {/* Mobile Lightweight Mode Switcher */}
+          <div className="flex items-center justify-center gap-2 pt-2">
+            {MODES.map((mode, idx) => (
+              <button
+                key={mode.id}
+                type="button"
+                onClick={() => setActiveTab(idx)}
+                className={`min-h-[44px] px-3 py-1.5 rounded-md font-display text-xs font-bold tracking-wider transition-all border ${
+                  activeTab === idx
+                    ? 'bg-blue-500/10 text-blue-400 border-blue-400/40'
+                    : 'bg-transparent text-gray-500 border-transparent hover:text-gray-300'
+                }`}
+              >
+                {mode.label}
+              </button>
+            ))}
           </div>
 
-          <div className="p-6 rounded-xl bg-[#0f1117] border border-blue-400/20 text-left min-h-[100px] flex items-center shadow-lg">
-            <p className="font-sans text-sm text-gray-200 leading-relaxed font-normal">
-              {MANIFESTO_MODES.find((m) => m.id === activeMode)?.statement}
-            </p>
+          <div className="min-h-[60px] flex items-center justify-center pt-2">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={activeTab}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.25 }}
+                className="font-display text-lg sm:text-3xl font-medium text-blue-300 tracking-tight"
+              >
+                {MODES[activeTab].statement}
+              </motion.p>
+            </AnimatePresence>
           </div>
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 }

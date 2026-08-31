@@ -52,7 +52,7 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'py-3 bg-[#07080a]/90 backdrop-blur-md border-b border-white/10' : 'py-5 bg-transparent'
+        scrolled ? 'py-3 bg-[#07080a]/95 backdrop-blur-md border-b border-white/10' : 'py-4 bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -95,31 +95,28 @@ export function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[60px] z-40 bg-[#07080a]/98 backdrop-blur-2xl border-b border-white/10 flex flex-col justify-between p-6 sm:p-8 overflow-y-auto">
-          <div className="space-y-6 pt-4">
-            <span className="font-mono text-[10px] text-blue-400 tracking-widest uppercase block">
-              // NAVIGATION
-            </span>
-            <nav className="flex flex-col gap-2 font-mono text-base tracking-widest text-gray-200" aria-label="Mobile Navigation">
+        <div className="md:hidden fixed inset-0 top-[56px] z-40 bg-[#07080a]/98 backdrop-blur-2xl flex flex-col justify-between p-6 overflow-y-auto">
+          <div className="space-y-6 pt-2">
+            <nav className="flex flex-col gap-3 font-display text-2xl font-bold tracking-tight text-gray-200" aria-label="Mobile Navigation">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="min-h-[44px] py-3 px-4 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-blue-400/30 transition-all flex items-center justify-between"
+                  className="min-h-[44px] py-2 flex items-center justify-between border-b border-white/10 hover:text-blue-400 transition-colors"
                 >
                   <span className="flex items-center gap-3">
-                    <span className="text-xs text-blue-400">{item.index}</span>
-                    <span className="font-bold">{item.label}</span>
+                    <span className="font-mono text-xs text-blue-400">{item.index}</span>
+                    <span>{item.label}</span>
                   </span>
-                  <span className="text-xs text-gray-500 font-mono">→</span>
+                  <span className="font-mono text-xs text-gray-500">→</span>
                 </Link>
               ))}
             </nav>
           </div>
 
-          <div className="space-y-6 pt-8 border-t border-white/10 pb-6">
-            <div className="flex items-center justify-between text-xs font-mono tracking-wider text-gray-400">
+          <div className="space-y-6 pt-6 border-t border-white/10 pb-6">
+            <div className="flex items-center justify-between font-mono text-xs tracking-wider text-gray-400">
               <a
                 href={CONTACT_INFO.githubUrl}
                 target="_blank"
@@ -143,7 +140,7 @@ export function Header() {
             <Link
               href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full min-h-[44px] py-3 px-6 text-center text-xs font-mono tracking-widest text-gray-950 bg-blue-400 rounded-lg hover:bg-blue-300 font-bold flex items-center justify-center gap-2 transition-colors"
+              className="w-full min-h-[44px] py-3 px-6 text-center font-display text-xs tracking-widest text-gray-950 bg-blue-400 rounded-lg hover:bg-blue-300 font-bold flex items-center justify-center gap-2 transition-colors"
             >
               <span>START A PROJECT</span>
               <span>→</span>

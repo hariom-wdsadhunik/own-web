@@ -13,6 +13,10 @@ export function getPublicClientProjects(): Project[] {
   return PROJECTS.filter((project) => project.visibility === 'public' && project.department === 'client');
 }
 
+export function getPublicLabExperiments(): Project[] {
+  return PROJECTS.filter((project) => project.visibility === 'public' && (project.category === 'AI Experiment' || project.department === 'creative'));
+}
+
 export function getPublicFeaturedProjects(): Project[] {
   return PROJECTS.filter((project) => project.visibility === 'public' && project.featured);
 }

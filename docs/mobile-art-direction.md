@@ -1,61 +1,70 @@
-# Mobile Composition & Art Direction Specification
+# Mobile Editorial Interface Specification & Design System
 
 **Project:** Hari Om — Personal Portfolio Website  
 **Date:** August 31, 2026  
-**Mobile Identity Concept:** Cinematic Editorial Portfolio  
-**Target Viewports:** 320px, 360px, 375px, 390px, 412px, 430px  
+**Mobile Identity Concept:** Mobile Editorial Product Experience (Digital Magazine / Visual Product Showcase)  
+**Target Mobile Viewports:** 320px, 360px, 375px, 390px, 412px, 430px  
+**Desktop Independence:** Desktop layouts (`1024px`, `1280px`, `1440px`, `1920px`) remain 100% untouched.
 
 ---
 
-## 1. Mobile Design Philosophy & Rhythm
+## 1. Information Hierarchy & Density Controls
 
-* **Core Rule:** FEWER WORDS $\rightarrow$ BIGGER VISUALS $\rightarrow$ STRONGER TYPOGRAPHY $\rightarrow$ MORE WHITESPACE $\rightarrow$ FEWER UI ELEMENTS $\rightarrow$ BETTER RHYTHM.
-* **No Desktop Compression:** Layouts, typography, and spacing are designed specifically for phone proportions rather than simply scaling down multi-column desktop grids.
-* **Information Overload Elimination:** Removed redundant status badges, tech badge floods, and long paragraphs from mobile card previews.
-
----
-
-## 2. Layout & Touch Accessibility
-
-* **Zero Horizontal Overflow:** Enforced across all mobile viewports (`320px` to `430px`).
-* **Touch Target Size:** All interactive buttons, navigation links, accordion triggers, and department tabs enforce a minimum touch target size of **44px × 44px**.
-* **Viewport Padding:** Responsive padding (`px-4 sm:px-6 lg:px-8`) maintains visual alignment without cramped edges.
+* **Core Flow Rule:** `VISUAL` $\rightarrow$ `TITLE` $\rightarrow$ `MEANING` $\rightarrow$ `ACTION`.
+* **Density Reduction:** 30–50% visual density reduction across mobile viewports by removing redundant metadata, floods of badges, duplicate summaries, and heavy card borders.
+* **No Dashboard Aesthetics:** Mobile avoids SaaS dashboard cards, documentation sidebars, or dense developer annotations.
 
 ---
 
-## 3. Section Composition & Flow
+## 2. Component System Specifications
 
-### Hero (`components/sections/Hero.tsx`)
-* Mobile hierarchy:
-  1. Availability badge (`AVAILABLE FOR SELECT INQUIRIES // HARI OM PORTFOLIO`)
-  2. Dominant display headline (`PRODUCT THINKING.`)
-  3. Sub-display positioning (`UI/UX Architecture & Web Engineering`)
-  4. Concise positioning sentence
-  5. Primary stacked actions (`EXPLORE WORK →` primary, `START A PROJECT ↗` secondary).
+### Header & Full-Screen Menu ([`Header.tsx`](file:///d:/own-web/components/layout/Header.tsx))
+* Top Bar: `HARI OM` compact wordmark + `MENU` trigger button.
+* Full-Screen Overlay: Calm, bold typography (`01 WORK`, `02 CAPABILITIES`, `03 LAB`, `04 ABOUT`) + social profiles (`GITHUB`, `LINKEDIN`) + primary CTA button (`START A PROJECT`).
 
-### Creative Projects (`components/sections/CreativeProjectsSection.tsx`)
-* Each project acts as a mobile visual chapter:
-  - Header: `01 / CREATIVE • CATEGORY`
-  - Title: `TRADESTAK`
-  - Large Visual Frame (90–100% available content width)
-  - Concise Tagline
-  - Case Study CTA (`EXPLORE CASE STUDY →`).
+### Hero ([`Hero.tsx`](file:///d:/own-web/components/sections/Hero.tsx))
+* Dominant mobile headline (`PRODUCT THINKING.`) + sub-display positioning (`UI/UX Architecture & Web Engineering`) + single positioning sentence + primary stacked CTAs (`EXPLORE WORK →` primary, `START A PROJECT ↗` secondary).
 
-### Manifesto (`components/sections/StatementTransition.tsx`)
-* Compact 3-mode selector (`DESIGN` | `BUILD` | `EXPERIMENT`) with a dark glass container displaying single concise statements.
+### Creative Projects ([`CreativeProjectsSection.tsx`](file:///d:/own-web/components/sections/CreativeProjectsSection.tsx))
+* Styled as editorial poster scenes rather than SaaS cards:
+  - `01 / INDEX`
+  - `TRADESTAK`
+  - `[ LARGE PROJECT VISUAL FRAME (100% width) ]`
+  - `Category & Short Tagline`
+  - `EXPLORE PROJECT →`
+* Technical badge floods and year/status pills are excluded from homepage mobile cards.
 
-### Capabilities (`components/portfolio/CapabilityItem.tsx`)
-* Touch-first accordion rows. Expanded state reveals concise summary, 2–4 key skill tags, and proof link.
+### Manifesto ([`StatementTransition.tsx`](file:///d:/own-web/components/sections/StatementTransition.tsx))
+* Editorial reflection pause: `I DON'T JUST MAKE WEBSITES.` + compact 3-mode selector (`DESIGN` | `BUILD` | `EXPERIMENT`) + single dynamic statement line.
 
-### About (`components/sections/AboutSection.tsx`)
-* Personal positioning paragraph + focus areas (`PRODUCT`, `DESIGN`, `WEB`, `AI`) + operating principles list.
+### Capabilities ([`CapabilityItem.tsx`](file:///d:/own-web/components/portfolio/CapabilityItem.tsx))
+* Numbered editorial list (`01 PRODUCT`, `02 UI/UX`, `03 FRONTEND`, `04 AI`) expanding into 1 short description + 2–4 key skill tags + proof link.
 
-### Contact CTA (`components/sections/ContactCTA.tsx`)
-* Closing frame sequence: `INITIATE COLLABORATION` $\rightarrow$ Headline $\rightarrow$ Primary Email CTA $\rightarrow$ Secondary GitHub Profile.
+### The Lab ([`LabSection.tsx`](file:///d:/own-web/components/sections/LabSection.tsx))
+* Indexed R&D entries (`01 INTERNET TIME CAPSULE` $\rightarrow$ `EXPERIMENT` $\rightarrow$ `Short tagline` $\rightarrow$ `EXPLORE EXPERIMENT →`).
+
+### Process ([`ProcessSection.tsx`](file:///d:/own-web/components/sections/ProcessSection.tsx))
+* Vertical timeline backbone with thin progress line (`01 THINK` $\rightarrow$ `06 SHIP`), 1 short sentence per step.
+
+### Footer ([`Footer.tsx`](file:///d:/own-web/components/layout/Footer.tsx))
+* Minimalist ending frame (`HARI OM` wordmark + `GITHUB` / `LINKEDIN` / `EMAIL` links + copyright).
 
 ---
 
-## 4. Mobile Performance & Reduced Motion
+## 3. Monospace Usage Rules
+* **Monospace (`font-mono`) is STRICTLY LIMITED to:**
+  - Index counters (`01`, `02`, `03`)
+  - Eyebrows & system metadata tags (`// OPERATING PHILOSOPHY`)
+  - Tech tags inside expanded accordion drawers
+* **Monospace is NEVER used for:**
+  - Display headlines or titles
+  - Body paragraphs
+  - Primary button text
+  - Brand wordmarks
 
-* **Performance Guarantee:** Zero heavy 3D engines (Three.js), zero canvas loops, optimized Motion transforms.
-* **Reduced Motion:** Respects `prefers-reduced-motion: reduce` by disabling parallax transforms and repeated reveals.
+---
+
+## 4. Accessibility & Performance Guarantees
+* **Touch Targets:** Minimum $44\text{px} \times 44\text{px}$ across all mobile buttons, links, and accordion triggers.
+* **Reduced Motion:** Respects `prefers-reduced-motion: reduce` by disabling parallax shifts and repeated reveals.
+* **Zero Heavy Dependencies:** No Three.js, WebGL, or canvas loops added.

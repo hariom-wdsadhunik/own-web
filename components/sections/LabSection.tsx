@@ -1,64 +1,64 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import { ArrowRight, Beaker } from 'lucide-react';
+import { getPublicLabExperiments } from '@/lib/projects';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
-import { TextLink } from '@/components/ui/TextLink';
-import { EXPERIMENTS } from '@/content/experiments';
 import { FadeIn } from '@/components/motion/FadeIn';
-import { Stagger } from '@/components/motion/Stagger';
 
 export function LabSection() {
+  const labExperiments = getPublicLabExperiments();
+
   return (
-    <section id="lab" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="lab" className="py-16 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
       <FadeIn>
         <SectionHeader
-          indexNumber="03"
-          eyebrow="THE LAB"
-          title="Experiments, Prototypes &amp; AI Research"
-          description="A dedicated laboratory space for creative technology explorations, LLM agent interfaces, and web archive prototypes."
+          indexNumber="04"
+          eyebrow="THE LAB // EXPERIMENTS &amp; R&amp;D"
+          title="Interface Ideas &amp; Technical Prototypes"
+          description="Experimental web art, AI interaction models and exploratory code."
         />
       </FadeIn>
 
-      <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {EXPERIMENTS.map((exp) => (
-          <Card key={exp.id} variant="interactive" className="p-8 space-y-6">
-            <div className="flex items-center justify-between">
-              <span className="font-mono text-xs text-blue-400 font-bold tracking-widest">
-                {exp.index}
-              </span>
-              <Badge variant="icy" dot>
-                {exp.status}
-              </Badge>
-            </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        {labExperiments.map((experiment, idx) => (
+          <FadeIn key={experiment.id} delay={idx * 0.1}>
+            <div className="p-6 sm:p-8 rounded-xl bg-[#0f1117] border border-white/10 space-y-4 hover:border-blue-400/40 transition-all group flex flex-col justify-between h-full">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs text-blue-400 font-bold">
+                    0{(idx + 1).toString()}
+                  </span>
+                  <Badge variant="icy" className="text-[10px]">
+                    <Beaker className="w-3 h-3 text-blue-400 shrink-0 inline-block mr-1" />
+                    <span>{experiment.category}</span>
+                  </Badge>
+                </div>
 
-            <div className="space-y-2">
-              <h3 className="font-display text-2xl font-bold text-white group-hover:text-blue-300 transition-colors">
-                {exp.title}
-              </h3>
-              <p className="font-mono text-xs text-gray-400 uppercase tracking-wider">
-                {exp.tagline}
-              </p>
-            </div>
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
+                  <Link href={`/lab/${experiment.slug}`}>{experiment.title}</Link>
+                </h3>
 
-            <p className="font-sans text-sm text-gray-300 leading-relaxed">
-              {exp.description}
-            </p>
+                <p className="font-sans text-xs sm:text-sm text-gray-300 leading-relaxed line-clamp-2">
+                  {experiment.tagline}
+                </p>
+              </div>
 
-            <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
-              {exp.tags.map((tag) => (
-                <Badge key={tag} variant="outline" className="text-[10px]">
-                  {tag}
-                </Badge>
-              ))}
+              <div className="pt-4 border-t border-white/10">
+                <Link
+                  href={`/lab/${experiment.slug}`}
+                  className="inline-flex items-center gap-2 font-display text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
+                >
+                  <span>EXPLORE EXPERIMENT</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
             </div>
-
-            <div className="pt-2">
-              <TextLink href={`/lab/${exp.slug}`} arrow="right">
-                EXPLORE EXPERIMENT
-              </TextLink>
-            </div>
-          </Card>
+          </FadeIn>
         ))}
-      </Stagger>
+      </div>
     </section>
   );
 }
