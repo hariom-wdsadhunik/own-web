@@ -1,3 +1,5 @@
+export type EvidenceType = 'Screenshot' | 'Video' | 'Architecture' | 'Prototype' | 'Interaction' | 'Code';
+
 export interface ProjectMedia {
   type: 'image' | 'video' | 'interactive';
   url?: string;
@@ -10,6 +12,15 @@ export interface ProjectMetric {
   label: string;
   value: string;
   description?: string;
+}
+
+export interface ProjectEvidence {
+  id: string;
+  title: string;
+  type: EvidenceType;
+  description: string;
+  media: ProjectMedia;
+  caption?: string;
 }
 
 export interface Project {
@@ -31,6 +42,7 @@ export interface Project {
   techStack: string[];
   metrics?: ProjectMetric[];
   gallery?: ProjectMedia[];
+  evidence?: ProjectEvidence[];
   deliverables?: string[];
   liveUrl?: string;
   githubUrl?: string;

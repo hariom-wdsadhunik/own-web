@@ -1,20 +1,20 @@
 import React from 'react';
-import { ProjectMedia } from '@/types/portfolio';
-import { ProjectPreview } from './ProjectPreview';
+import { ProjectMedia as ProjectMediaType } from '@/types/portfolio';
+import { ProjectMedia } from './ProjectMedia';
 
 export interface ProjectGalleryProps {
-  heroMedia: ProjectMedia;
+  heroMedia: ProjectMediaType;
   title: string;
   category: string;
   year: string;
   status: string;
-  gallery?: ProjectMedia[];
+  gallery?: ProjectMediaType[];
 }
 
 export function ProjectGallery({ heroMedia, title, category, year, status, gallery }: ProjectGalleryProps) {
   return (
     <div className="space-y-8">
-      <ProjectPreview
+      <ProjectMedia
         media={heroMedia}
         title={title}
         category={category}
@@ -25,14 +25,12 @@ export function ProjectGallery({ heroMedia, title, category, year, status, galle
       {gallery && gallery.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           {gallery.map((item, idx) => (
-            <div key={idx} className="rounded-lg overflow-hidden border border-white/10 bg-[#0f1117] p-4 space-y-2">
-              <div className="w-full aspect-16/9 bg-black/40 rounded flex items-center justify-center font-mono text-xs text-gray-500">
-                {item.alt}
-              </div>
-              {item.caption && (
-                <p className="font-mono text-[11px] text-gray-400">{item.caption}</p>
-              )}
-            </div>
+            <ProjectMedia
+              key={idx}
+              media={item}
+              title={`${title} — Evidence ${idx + 1}`}
+              category={category}
+            />
           ))}
         </div>
       )}
