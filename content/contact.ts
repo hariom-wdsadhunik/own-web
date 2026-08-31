@@ -4,6 +4,6 @@ export const CONTACT_INFO: ContactInfo = {
   heading: "LET'S BUILD SOMETHING WORTH REMEMBERING.",
   subheading: 'Available for select digital product inquiries, UI/UX architecture, and AI engineering collaborations.',
   email: 'contact@hariom.dev',
-  githubUrl: 'https://github.com',
-  linkedinUrl: 'https://linkedin.com',
+  githubUrl: 'https://github.com/hariom',
+  linkedinUrl: 'https://linkedin.com/in/hariom',
 };
