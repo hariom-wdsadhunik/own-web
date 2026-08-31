@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[80vh] sm:min-h-[90vh] flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24 overflow-hidden"
+      className="relative min-h-[80svh] sm:min-h-[90vh] flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24 overflow-hidden"
     >
       <motion.div
         style={{ y: heroY, opacity: heroOpacity }}
@@ -29,10 +29,10 @@ export function Hero() {
       >
         <FadeIn delay={0.1}>
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap">
-            <Badge variant="icy" dot className="w-fit text-[10px] sm:text-[11px]">
+            <Badge variant="icy" dot className="w-fit text-xs">
               AVAILABLE FOR SELECT INQUIRIES
             </Badge>
-            <span className="font-mono text-[10px] sm:text-xs text-gray-500 uppercase tracking-widest">
+            <span className="font-mono text-xs text-gray-500 uppercase tracking-widest">
               // HARI OM PORTFOLIO
             </span>
           </div>
@@ -40,7 +40,7 @@ export function Hero() {
 
         <div className="space-y-2 sm:space-y-4">
           <Reveal delay={0.2}>
-            <h1 className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-[5.5rem] font-bold tracking-tight text-white leading-[1.05]">
+            <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[5.5rem] font-bold tracking-tight text-white leading-[1.05]">
               PRODUCT THINKING.
             </h1>
           </Reveal>
@@ -52,7 +52,7 @@ export function Hero() {
         </div>
 
         <FadeIn delay={0.45}>
-          <p className="font-sans text-sm sm:text-xl text-gray-300 max-w-2xl leading-relaxed font-normal">
+          <p className="font-sans text-base sm:text-xl text-gray-300 max-w-2xl leading-relaxed font-normal">
             Creating high-performance digital products, scalable web platforms, and experimental AI interface architectures with extreme visual restraint.
           </p>
         </FadeIn>
@@ -63,7 +63,7 @@ export function Hero() {
               href="#creative-work"
               variant="primary"
               size="lg"
-              className="w-full sm:w-auto min-h-[44px] justify-center text-xs sm:text-sm font-bold"
+              className="w-full sm:w-auto min-h-[44px] justify-center text-sm font-bold"
               icon={<ArrowRight className="w-4 h-4" />}
             >
               EXPLORE WORK →
@@ -72,7 +72,7 @@ export function Hero() {
               href="#contact"
               variant="secondary"
               size="lg"
-              className="w-full sm:w-auto min-h-[44px] justify-center text-xs sm:text-sm text-gray-400 hover:text-white"
+              className="w-full sm:w-auto min-h-[44px] justify-center text-sm text-gray-400 hover:text-white"
               icon={<Terminal className="w-4 h-4" />}
             >
               START A PROJECT ↗

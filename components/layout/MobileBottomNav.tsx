@@ -34,14 +34,14 @@ export function MobileBottomNav() {
               key={item.label}
               href={item.href}
               className={cn(
-                'min-h-[44px] flex flex-col items-center justify-center gap-1 rounded-lg py-1.5 px-2 transition-all duration-200 active:scale-95',
+                'min-h-[44px] flex flex-col items-center justify-center gap-1 rounded-lg py-1 px-2 transition-all duration-200 active:scale-95',
                 isActive
-                  ? 'bg-blue-500/15 text-blue-400 font-bold border-t-2 border-blue-400'
+                  ? 'bg-blue-500/10 text-blue-400 font-bold border-t-2 border-blue-400'
                   : 'text-gray-400 hover:text-gray-200 hover:bg-white/5 border-t-2 border-transparent'
               )}
               aria-current={isActive ? 'page' : undefined}
             >
-              <Icon className={cn('w-4 h-4 transition-transform', isActive && 'scale-110')} />
+              <Icon className={cn('w-4 h-4 transition-transform', isActive && 'scale-110 text-blue-400')} />
               <span className="font-display text-[10px] tracking-wider uppercase font-semibold">
                 {item.label}
               </span>

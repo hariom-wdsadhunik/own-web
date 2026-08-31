@@ -13,7 +13,7 @@ export function CreativeProjectsSection() {
   const creativeProjects = getPublicCreativeProjects();
 
   return (
-    <section id="creative-work" className="py-16 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
+    <section id="creative-work" className="py-16 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24">
       <FadeIn>
         <SectionHeader
           indexNumber="01"
@@ -23,7 +23,7 @@ export function CreativeProjectsSection() {
         />
       </FadeIn>
 
-      <div className="space-y-16 sm:space-y-36">
+      <div className="space-y-20 sm:space-y-36">
         {creativeProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
@@ -34,17 +34,17 @@ export function CreativeProjectsSection() {
                   isEven ? '' : 'lg:flex-row-reverse'
                 }`}
               >
-                {/* Mobile Editorial Header */}
+                {/* Mobile Feature Header */}
                 <div className="lg:hidden space-y-1">
                   <span className="font-mono text-xs text-blue-400 font-bold tracking-widest block">
-                    0{(idx + 1).toString()}
+                    0{(idx + 1).toString()} / CREATIVE
                   </span>
                   <h3 className="font-display text-3xl font-bold text-white tracking-tight">
                     <Link href={`/work/${project.slug}`}>{project.title}</Link>
                   </h3>
                 </div>
 
-                {/* Dominant Visual Media Showcase Frame */}
+                {/* Dominant Feature Visual Frame (90-100% Content Width) */}
                 <div className={`lg:col-span-7 ${isEven ? '' : 'lg:order-2'}`}>
                   <Link href={`/work/${project.slug}`} className="block group/media">
                     <ProjectPreview
@@ -58,19 +58,18 @@ export function CreativeProjectsSection() {
                   </Link>
                 </div>
 
-                {/* Editorial Metadata & Context */}
+                {/* Mobile Editorial Context */}
                 <div className={`lg:col-span-5 space-y-3 sm:space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
-                  {/* Mobile Context & Category */}
                   <div className="lg:hidden space-y-2">
-                    <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest block">
+                    <span className="font-mono text-xs text-gray-400 uppercase tracking-widest block">
                       {project.category}
                     </span>
-                    <p className="font-sans text-sm text-gray-300 leading-relaxed font-normal">
+                    <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
                       {project.tagline}
                     </p>
                   </div>
 
-                  {/* Desktop Only Metadata */}
+                  {/* Desktop Only Metadata & Title */}
                   <div className="hidden lg:flex items-center gap-3 flex-wrap">
                     <span className="font-mono text-xs text-blue-400 font-bold tracking-widest">
                       0{(idx + 1).toString()}
@@ -80,7 +79,6 @@ export function CreativeProjectsSection() {
                     <span className="font-mono text-xs text-gray-500 uppercase">// {project.category}</span>
                   </div>
 
-                  {/* Desktop Only Title & Summary */}
                   <div className="hidden lg:block space-y-3">
                     <h3 className="font-display text-4xl md:text-5xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
                       <Link href={`/work/${project.slug}`}>{project.title}</Link>
