@@ -8,6 +8,10 @@ npm-debug.log*
 
 # Environment
 .env*.local
+.dev.vars
+
+# Cloudflare Wrangler generated types
+worker-configuration.d.ts
 
 # IDE & OS
 .DS_Store
