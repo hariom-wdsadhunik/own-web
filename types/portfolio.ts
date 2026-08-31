@@ -24,8 +24,14 @@ export interface Project {
   featured: boolean;
   heroImage: ProjectMedia;
   summary: string;
+  problemStatement?: string;
+  approach?: string;
+  designNotes?: string;
+  engineeringNotes?: string;
   techStack: string[];
   metrics?: ProjectMetric[];
+  gallery?: ProjectMedia[];
+  deliverables?: string[];
   liveUrl?: string;
   githubUrl?: string;
   status: 'Production' | 'In Development' | 'Active Prototype' | 'Case Study Pending';
@@ -48,6 +54,8 @@ export interface LabExperiment {
   title: string;
   tagline: string;
   description: string;
+  problemOrMotivation?: string;
+  findingsOrLearnings?: string;
   year: string;
   tags: string[];
   status: 'Active Prototype' | 'Research Note' | 'Concept';

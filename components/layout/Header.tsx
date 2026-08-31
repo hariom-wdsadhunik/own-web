@@ -7,10 +7,10 @@ import { cn } from '@/lib/utils';
 import { NavItem } from '@/types/portfolio';
 
 const NAV_ITEMS: NavItem[] = [
-  { label: 'WORK', href: '#work' },
-  { label: 'CAPABILITIES', href: '#capabilities' },
-  { label: 'LAB', href: '#lab' },
-  { label: 'ABOUT', href: '#about' },
+  { label: 'WORK', href: '/work' },
+  { label: 'CAPABILITIES', href: '/#capabilities' },
+  { label: 'LAB', href: '/lab' },
+  { label: 'ABOUT', href: '/#about' },
 ];
 
 export function Header() {
@@ -73,7 +73,7 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="#contact"
+            href="/#contact"
             className="px-4 py-2 text-xs font-mono tracking-wider text-gray-100 bg-white/5 border border-white/15 rounded-md hover:bg-white/10 hover:border-blue-400/50 transition-all focus-visible:ring-1 focus-visible:ring-blue-400"
           >
             START A PROJECT
@@ -108,7 +108,7 @@ export function Header() {
           </nav>
           <div className="pb-8">
             <Link
-              href="#contact"
+              href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full py-3 text-center text-xs font-mono tracking-widest text-gray-900 bg-gray-100 rounded-md hover:bg-white font-semibold block transition-colors"
             >
