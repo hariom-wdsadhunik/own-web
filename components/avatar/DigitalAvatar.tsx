@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { motion, useMotionValue, useSpring } from 'motion/react';
 import { cn } from '@/lib/utils';
 
@@ -32,10 +33,12 @@ export function DigitalAvatar({
     if (!interactive) return;
 
     const handleMouseMove = (e: MouseEvent) => {
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
-      const offsetX = Math.max(-15, Math.min(15, (e.clientX - centerX) / 40));
-      const offsetY = Math.max(-15, Math.min(15, (e.clientY - centerY) / 40));
+      const offsetX = Math.max(-12, Math.min(12, (e.clientX - centerX) / 45));
+      const offsetY = Math.max(-12, Math.min(12, (e.clientY - centerY) / 45));
       mouseX.set(offsetX);
       mouseY.set(offsetY);
     };
@@ -59,6 +62,8 @@ export function DigitalAvatar({
     shipping: 'DISPATCH: SHIPPED',
   };
 
+  const assetSrc = `/brand/avatar/${state}.png`;
+
   return (
     <div
       aria-hidden="true"
@@ -73,7 +78,7 @@ export function DigitalAvatar({
         />
 
         <motion.div
-          className="absolute inset-0 rounded-full border border-blue-400/20 border-dashed"
+          className="absolute inset-0 rounded-full border border-blue-400/25 border-dashed"
           animate={
             mounted
               ? {
@@ -82,7 +87,7 @@ export function DigitalAvatar({
               : {}
           }
           transition={{
-            duration: state === 'exploring' ? 8 : state === 'thinking' ? 12 : 20,
+            duration: state === 'exploring' ? 10 : state === 'thinking' ? 14 : 24,
             repeat: Infinity,
             ease: 'linear',
           }}
@@ -90,58 +95,21 @@ export function DigitalAvatar({
 
         <motion.div
           style={{ x: mounted && interactive ? smoothX : 0, y: mounted && interactive ? smoothY : 0 }}
-          className="relative w-full h-full p-2 flex items-center justify-center z-10"
+          className="relative w-full h-full p-1 flex items-center justify-center z-10 rounded-full bg-[#07080a] border border-blue-400/30 overflow-hidden shadow-[0_0_16px_rgba(96,165,250,0.2)]"
         >
-          <svg
-            viewBox="0 0 120 120"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full drop-shadow-[0_0_12px_rgba(96,165,250,0.3)]"
-          >
-            <path
-              d="M60 6 L104 31 L104 89 L60 114 L16 89 L16 31 Z"
-              fill="#0f1117"
-              stroke="#1e293b"
-              strokeWidth="2.5"
-            />
-
-            <path
-              d="M32 45 C32 38, 88 38, 88 45 L80 75 C80 82, 40 82, 40 75 Z"
-              fill="#07080a"
-              stroke="#334155"
-              strokeWidth="2"
-            />
-
-            <motion.path
-              d="M36 54 L84 54"
-              stroke={state === 'building' ? '#38bdf8' : state === 'shipping' ? '#34d399' : '#60a5fa'}
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              animate={{ opacity: [0.6, 1, 0.6] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            />
-
-            <circle
-              cx="60"
-              cy="54"
-              r="4.5"
-              fill={state === 'shipping' ? '#34d399' : '#93c5fd'}
-            />
-
-            <circle cx="34" cy="34" r="2" fill="#60a5fa" opacity="0.6" />
-            <circle cx="86" cy="34" r="2" fill="#60a5fa" opacity="0.6" />
-            <circle cx="60" cy="98" r="2.5" fill="#3b82f6" />
-
-            <path d="M22 28 L28 28 L28 22" stroke="#60a5fa" strokeWidth="1.5" opacity="0.5" />
-            <path d="M98 28 L92 28 L92 22" stroke="#60a5fa" strokeWidth="1.5" opacity="0.5" />
-            <path d="M22 92 L28 92 L28 98" stroke="#60a5fa" strokeWidth="1.5" opacity="0.5" />
-            <path d="M98 92 L92 92 L92 98" stroke="#60a5fa" strokeWidth="1.5" opacity="0.5" />
-          </svg>
+          <Image
+            src={assetSrc}
+            alt="Hari Om Digital Character"
+            width={160}
+            height={160}
+            className="w-full h-full object-cover rounded-full filter contrast-[1.05] brightness-[1.02]"
+            priority={size === 'lg' || state === 'idle'}
+          />
         </motion.div>
       </div>
 
       {size !== 'sm' && (
-        <span className="font-mono text-[9px] text-gray-500 tracking-widest uppercase mt-2 group-hover:text-blue-400 transition-colors">
+        <span className="font-mono text-[9px] text-gray-400 tracking-widest uppercase mt-2 group-hover:text-blue-400 transition-colors">
           {stateBadges[state]}
         </span>
       )}
