@@ -20,9 +20,9 @@ export function Hero() {
           </div>
         </FadeIn>
 
-        <div className="space-y-3 sm:space-y-5">
+        <div className="space-y-3 sm:space-y-4">
           <Reveal delay={0.2}>
-            <h1 className="font-display text-4xl sm:text-7xl md:text-8xl font-bold tracking-tight text-white leading-[1.05]">
+            <h1 className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-[5.5rem] font-bold tracking-tight text-white leading-[1.02]">
               PRODUCT THINKING.
             </h1>
           </Reveal>

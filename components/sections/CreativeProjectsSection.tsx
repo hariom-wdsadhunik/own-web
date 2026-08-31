@@ -16,7 +16,7 @@ export function CreativeProjectsSection() {
         indexNumber="01"
         eyebrow="DEPARTMENT 01 // CREATIVE PROJECTS"
         title="Products, Experiments &amp; Explorations"
-        description="Self-initiated products, research tools, and creative technology built to explore what digital experiences can become."
+        description="Products, experiments and ideas I built to explore what digital experiences could become."
         actionSlot={
           <div className="flex items-center gap-3">
             <Badge variant="icy">
@@ -27,7 +27,7 @@ export function CreativeProjectsSection() {
         }
       />
 
-      <div className="space-y-24">
+      <div className="space-y-28 sm:space-y-36">
         {creativeProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
@@ -38,30 +38,36 @@ export function CreativeProjectsSection() {
                   isEven ? '' : 'lg:flex-row-reverse'
                 }`}
               >
+                {/* Visual Media Showcase */}
                 <div className={`lg:col-span-7 ${isEven ? '' : 'lg:order-2'}`}>
-                  <Link href={`/work/${project.slug}`} className="block">
+                  <Link href={`/work/${project.slug}`} className="block group/media">
                     <ProjectPreview
                       media={project.heroImage}
                       title={project.title}
                       category={project.category}
                       year={project.year}
                       status={project.status}
+                      className="transition-transform duration-500 group-hover/media:scale-[1.02]"
                     />
                   </Link>
                 </div>
 
+                {/* Editorial Metadata & Context */}
                 <div className={`lg:col-span-5 space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
                   <div className="flex items-center gap-3 flex-wrap">
+                    <span className="font-mono text-xs text-blue-400 font-bold tracking-widest">
+                      0{(idx + 1).toString()}
+                    </span>
                     <Badge variant="icy" dot>{project.status}</Badge>
                     <Badge variant="outline">{project.year}</Badge>
-                    <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">// CREATIVE</span>
+                    <span className="font-mono text-xs text-gray-500 uppercase">// {project.category}</span>
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="font-display text-3xl sm:text-4xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                  <div className="space-y-3">
+                    <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
                       <Link href={`/work/${project.slug}`}>{project.title}</Link>
                     </h3>
-                    <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed font-normal">
+                    <p className="font-sans text-base sm:text-lg text-gray-300 leading-relaxed font-normal">
                       {project.tagline}
                     </p>
                   </div>
@@ -78,10 +84,10 @@ export function CreativeProjectsSection() {
                     ))}
                   </div>
 
-                  <div className="pt-2">
+                  <div className="pt-3">
                     <Link
                       href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-medium tracking-wider min-h-[44px]"
+                      className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-semibold tracking-wider min-h-[44px]"
                     >
                       <span>EXPLORE CREATIVE CASE STUDY</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />

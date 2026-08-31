@@ -11,7 +11,7 @@ export function ClientProjectsSection() {
   const clientProjects = getPublicClientProjects();
 
   return (
-    <section id="client-work" className="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 border-t border-white/10">
+    <section id="client-work" className="py-20 sm:py-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 border-t border-white/10">
       <SectionHeader
         indexNumber="02"
         eyebrow="DEPARTMENT 02 // CLIENT PROJECTS"
@@ -21,14 +21,14 @@ export function ClientProjectsSection() {
           <div className="flex items-center gap-3">
             <Badge variant="outline">
               <Briefcase className="w-3 h-3 text-gray-400 shrink-0 inline-block mr-1" />
-              <span>COMMERCIAL DELIVERIES</span>
+              <span>COMMERCIAL ARCHIVE</span>
             </Badge>
           </div>
         }
       />
 
       {clientProjects.length > 0 ? (
-        <div className="space-y-24">
+        <div className="space-y-20">
           {clientProjects.map((project, idx) => {
             const isEven = idx % 2 === 0;
 
@@ -56,7 +56,7 @@ export function ClientProjectsSection() {
                       <Badge variant="icy" dot>{project.status}</Badge>
                       <Badge variant="outline">{project.year}</Badge>
                       {project.client && (
-                        <span className="font-mono text-xs text-emerald-400 uppercase tracking-widest">// CLIENT: {project.client}</span>
+                        <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">// CLIENT: {project.client}</span>
                       )}
                     </div>
 
@@ -98,31 +98,31 @@ export function ClientProjectsSection() {
         </div>
       ) : (
         <FadeIn>
-          <div className="p-8 sm:p-12 rounded-2xl bg-[#0f1117] border border-white/10 space-y-6 relative overflow-hidden">
-            <div className="flex items-center justify-between border-b border-white/10 pb-6 flex-wrap gap-4">
+          <div className="p-6 sm:p-10 rounded-2xl bg-[#0f1117] border border-white/10 space-y-5 relative overflow-hidden">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 flex-wrap gap-4">
               <div className="flex items-center gap-3">
-                <Clock className="w-5 h-5 text-blue-400" />
+                <Clock className="w-4 h-4 text-blue-400" />
                 <span className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest">
                   COMMERCIAL ARCHIVE IN PROGRESS
                 </span>
               </div>
               <Badge variant="outline" className="text-xs">
-                STATUS: PREPARING CASE STUDIES
+                PREPARING CASE STUDIES
               </Badge>
             </div>
 
-            <div className="space-y-3 max-w-2xl">
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-white">
+            <div className="space-y-2 max-w-2xl">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-white">
                 Client Work &amp; Commercial Deliveries
               </h3>
-              <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed font-normal">
+              <p className="font-sans text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
                 Commercial projects are currently being compiled into verified case studies with brief specifications, technical architecture notes, and production deliverables.
               </p>
             </div>
 
-            <div className="pt-4 flex items-center gap-4 flex-wrap border-t border-white/5">
-              <span className="font-mono text-xs text-gray-500 uppercase tracking-widest">
-                AVAILABLE FOR NEW CLIENT COMMISSIONS &amp; CONTRACTS
+            <div className="pt-3 flex items-center gap-4 flex-wrap border-t border-white/5">
+              <span className="font-mono text-[11px] text-gray-500 uppercase tracking-widest">
+                AVAILABLE FOR COMMISSIONS &amp; CONTRACTS
               </span>
               <Link
                 href="#contact"
