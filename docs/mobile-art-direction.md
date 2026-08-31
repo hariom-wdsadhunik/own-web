@@ -24,7 +24,7 @@
 ## 3. Dedicated Mobile Components
 
 ### Navigation (`components/layout/Header.tsx`)
-* Compact top bar (`HARI OM` ... `MENU button`).
+* Compact top bar (`Wordmark` component ... `MENU button`).
 * Toggling menu launches a full-screen, high-blur overlay (`bg-[#07080a]/98`).
 * Structure:
   * Indexed links (`01 WORK`, `02 CAPABILITIES`, `03 LAB`, `04 ABOUT`).
@@ -34,9 +34,9 @@
 
 ### Hero Composition (`components/sections/Hero.tsx`)
 * Mobile hierarchy:
-  1. Small DigitalAvatar (`size="sm"`)
-  2. Availability badge (`AVAILABLE FOR SELECT INQUIRIES`)
-  3. Bold headline (`PRODUCT THINKING. UI/UX & WEB CRAFT.`)
+  1. Availability badge (`AVAILABLE FOR SELECT INQUIRIES`)
+  2. Editorial headline (`PRODUCT THINKING. UI/UX & WEB CRAFT.`)
+  3. Positioning summary
   4. Primary stacked CTAs (`EXPLORE WORK →` / `START A PROJECT ↗`).
 
 ### Mobile Manifesto (`components/sections/StatementTransition.tsx`)
@@ -53,7 +53,6 @@
 
 ---
 
-## 4. Digital Avatar & Performance
-* **Avatar Integration (`components/avatar/DigitalAvatar.tsx`):** Small footprint, static/ambient breathing pulse, pointer tracking disabled on coarse touch screens (`@media (pointer: fine)`).
-* **Performance Guarantee:** Zero heavy 3D engines (Three.js), zero unoptimized canvas loops, reduced background blurs to ensure sustained 60 FPS on mobile devices.
-* **Reduced Motion:** Respects `prefers-reduced-motion: reduce` by replacing animations with static vector states.
+## 4. Digital Character / Avatar Status: [CANCELLED]
+* **Character Concept Cancelled:** The character / avatar direction has been permanently cancelled. The website relies strictly on clean typography, wordmarks, interface design, motion, and verified project work.
+* **Performance Guarantee:** Zero heavy 3D engines (Three.js), zero unoptimized canvas loops, sustained 60 FPS across all mobile devices.

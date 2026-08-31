@@ -2,15 +2,10 @@ import { ArrowRight, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { CONTACT_INFO } from '@/content/contact';
 import { FadeIn } from '@/components/motion/FadeIn';
-import { DigitalAvatar } from '@/components/avatar/DigitalAvatar';
 
 export function ContactCTA() {
   return (
-    <section id="contact" className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 border-t border-white/10">
-      <FadeIn className="flex justify-center">
-        <DigitalAvatar size="md" state="shipping" />
-      </FadeIn>
-
+    <section id="contact" className="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 border-t border-white/10">
       <FadeIn>
         <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
           INITIATE COLLABORATION
@@ -35,6 +30,7 @@ export function ContactCTA() {
             href={`mailto:${CONTACT_INFO.email}`}
             variant="primary"
             size="lg"
+            className="min-h-[44px]"
             icon={<Mail className="w-4 h-4" />}
           >
             SEND EMAIL INQUIRY
@@ -44,6 +40,7 @@ export function ContactCTA() {
             isExternal
             variant="secondary"
             size="lg"
+            className="min-h-[44px]"
             icon={<ArrowRight className="w-4 h-4" />}
           >
             VIEW GITHUB PROFILE

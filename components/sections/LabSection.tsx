@@ -5,7 +5,6 @@ import { TextLink } from '@/components/ui/TextLink';
 import { EXPERIMENTS } from '@/content/experiments';
 import { FadeIn } from '@/components/motion/FadeIn';
 import { Stagger } from '@/components/motion/Stagger';
-import { DigitalAvatar } from '@/components/avatar/DigitalAvatar';
 
 export function LabSection() {
   return (
@@ -16,7 +15,6 @@ export function LabSection() {
           eyebrow="THE LAB"
           title="Experiments, Prototypes &amp; AI Research"
           description="A dedicated laboratory space for creative technology explorations, LLM agent interfaces, and web archive prototypes."
-          actionSlot={<DigitalAvatar size="sm" state="exploring" />}
         />
       </FadeIn>
 

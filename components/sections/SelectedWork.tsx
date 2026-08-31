@@ -6,7 +6,6 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Badge } from '@/components/ui/Badge';
 import { ProjectPreview } from '@/components/portfolio/ProjectPreview';
 import { FadeIn } from '@/components/motion/FadeIn';
-import { DigitalAvatar } from '@/components/avatar/DigitalAvatar';
 
 export function SelectedWork() {
   const featuredProjects = getPublicFeaturedProjects();
@@ -18,16 +17,13 @@ export function SelectedWork() {
         title="SELECTED WORK"
         description="A curated selection of digital products, web platforms, and experimental interface architectures."
         actionSlot={
-          <div className="flex items-center gap-4">
-            <DigitalAvatar size="sm" state="observing" />
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 hover:text-blue-300 transition-colors group tracking-wider uppercase min-h-[44px]"
-            >
-              <span>VIEW ALL WORK ({featuredProjects.length})</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 hover:text-blue-300 transition-colors group tracking-wider uppercase min-h-[44px]"
+          >
+            <span>VIEW ALL WORK ({featuredProjects.length})</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
         }
       />
 
