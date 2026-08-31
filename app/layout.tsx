@@ -3,6 +3,8 @@ import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { CinematicBackground } from '@/components/ui/CinematicBackground';
+import { PointerFollower } from '@/components/ui/PointerFollower';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -29,6 +31,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}>
       <body className="font-sans bg-[#07080a] text-gray-100 min-h-screen flex flex-col selection:bg-blue-500/20 selection:text-white">
+        <CinematicBackground />
+        <PointerFollower />
         <Header />
         <main className="flex-1 w-full pt-20">
           {children}
