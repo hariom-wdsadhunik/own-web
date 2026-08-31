@@ -6,6 +6,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { NavItem } from '@/types/portfolio';
 import { CONTACT_INFO } from '@/content/contact';
+import { Wordmark } from '@/components/brand/Wordmark';
 
 const NAV_ITEMS: (NavItem & { index: string })[] = [
   { index: '01', label: 'WORK', href: '/work' },
@@ -55,13 +56,14 @@ export function Header() {
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <Link
-          href="/"
-          className="group flex items-center gap-2 text-sm font-semibold tracking-wider text-gray-100 hover:text-white transition-colors py-2"
-        >
-          <span className="w-2 h-2 rounded-full bg-blue-400 group-hover:scale-125 transition-transform" />
-          <span className="font-mono uppercase tracking-widest text-base">HARI OM</span>
-        </Link>
+        <div className="py-1">
+          <div className="hidden sm:block">
+            <Wordmark variant="full" size="md" />
+          </div>
+          <div className="sm:hidden">
+            <Wordmark variant="compact" size="sm" />
+          </div>
+        </div>
 
         <nav className="hidden md:flex items-center gap-8 text-xs font-mono tracking-widest text-gray-400" aria-label="Main Navigation">
           {NAV_ITEMS.map((item) => (

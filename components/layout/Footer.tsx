@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { CONTACT_INFO } from '@/content/contact';
+import { Wordmark } from '@/components/brand/Wordmark';
 
 export function Footer() {
   const currentYear = 2026;
@@ -8,10 +9,7 @@ export function Footer() {
     <footer className="w-full border-t border-white/10 bg-[#07080a] text-gray-400 font-mono text-xs py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div className="space-y-3">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-gray-200 text-sm font-semibold tracking-wider">HARI OM</span>
-          </div>
+          <Wordmark variant="full" size="sm" />
           <p className="text-gray-500 max-w-sm text-xs leading-relaxed font-sans">
             Product thinking, UI/UX engineering, AI experimentation, and high-performance digital craft.
           </p>
@@ -37,7 +35,7 @@ export function Footer() {
 
       <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-gray-600 text-center sm:text-left">
         <p>© {currentYear} Hari Om. All rights reserved.</p>
-        <p className="tracking-widest uppercase">Cinematic Futuristic Premium</p>
+        <p className="tracking-widest uppercase font-display font-medium text-gray-500">Cinematic Futuristic Premium</p>
       </div>
     </footer>
   );
