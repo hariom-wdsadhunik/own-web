@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { NavItem } from '@/types/portfolio';
+import { CONTACT_INFO } from '@/content/contact';
 
-const NAV_ITEMS: NavItem[] = [
-  { label: 'WORK', href: '/work' },
-  { label: 'CAPABILITIES', href: '/#capabilities' },
-  { label: 'LAB', href: '/lab' },
-  { label: 'ABOUT', href: '/#about' },
+const NAV_ITEMS: (NavItem & { index: string })[] = [
+  { index: '01', label: 'WORK', href: '/work' },
+  { index: '02', label: 'CAPABILITIES', href: '/#capabilities' },
+  { index: '03', label: 'LAB', href: '/lab' },
+  { index: '04', label: 'ABOUT', href: '/#about' },
 ];
 
 export function Header() {
@@ -50,13 +51,13 @@ export function Header() {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'py-3 bg-[#07080a]/85 backdrop-blur-md border-b border-white/10' : 'py-5 bg-transparent'
+        scrolled ? 'py-3 bg-[#07080a]/90 backdrop-blur-md border-b border-white/10' : 'py-5 bg-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <Link
           href="/"
-          className="group flex items-center gap-2 text-sm font-semibold tracking-wider text-gray-100 hover:text-white transition-colors"
+          className="group flex items-center gap-2 text-sm font-semibold tracking-wider text-gray-100 hover:text-white transition-colors py-2"
         >
           <span className="w-2 h-2 rounded-full bg-blue-400 group-hover:scale-125 transition-transform" />
           <span className="font-mono uppercase tracking-widest text-base">HARI OM</span>
@@ -83,36 +84,67 @@ export function Header() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white bg-white/5 border border-white/10"
+          className="md:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white bg-white/5 border border-white/10 transition-colors"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? <X className="w-5 h-5 text-blue-400" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-[60px] z-40 bg-[#07080a]/95 backdrop-blur-xl border-b border-white/10 flex flex-col justify-between p-6">
-          <nav className="flex flex-col gap-6 pt-4 text-sm font-mono tracking-widest text-gray-300">
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="py-3 border-b border-white/5 hover:text-white hover:border-blue-400/30 transition-all flex items-center justify-between"
+        <div className="md:hidden fixed inset-0 top-[60px] z-40 bg-[#07080a]/98 backdrop-blur-2xl border-b border-white/10 flex flex-col justify-between p-6 sm:p-8 overflow-y-auto">
+          <div className="space-y-6 pt-4">
+            <span className="font-mono text-[10px] text-blue-400 tracking-widest uppercase block">
+              // NAVIGATION
+            </span>
+            <nav className="flex flex-col gap-2 font-mono text-base tracking-widest text-gray-200" aria-label="Mobile Navigation">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="min-h-[44px] py-3 px-4 rounded-lg border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-blue-400/30 transition-all flex items-center justify-between"
+                >
+                  <span className="flex items-center gap-3">
+                    <span className="text-xs text-blue-400">{item.index}</span>
+                    <span className="font-bold">{item.label}</span>
+                  </span>
+                  <span className="text-xs text-gray-500 font-mono">→</span>
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="space-y-6 pt-8 border-t border-white/10 pb-6">
+            <div className="flex items-center justify-between text-xs font-mono tracking-wider text-gray-400">
+              <a
+                href={CONTACT_INFO.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[44px] flex items-center gap-1 hover:text-white transition-colors"
               >
-                <span>{item.label}</span>
-                <span className="text-xs text-gray-600 font-mono">→</span>
-              </Link>
-            ))}
-          </nav>
-          <div className="pb-8">
+                <span>GITHUB</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href={CONTACT_INFO.linkedinUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="min-h-[44px] flex items-center gap-1 hover:text-white transition-colors"
+              >
+                <span>LINKEDIN</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
             <Link
               href="/#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full py-3 text-center text-xs font-mono tracking-widest text-gray-900 bg-gray-100 rounded-md hover:bg-white font-semibold block transition-colors"
+              className="w-full min-h-[44px] py-3 px-6 text-center text-xs font-mono tracking-widest text-gray-950 bg-blue-400 rounded-lg hover:bg-blue-300 font-bold flex items-center justify-center gap-2 transition-colors"
             >
-              START A PROJECT
+              <span>START A PROJECT</span>
+              <span>→</span>
             </Link>
           </div>
         </div>

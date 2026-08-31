@@ -17,24 +17,24 @@ export function CapabilityItem({ capability }: CapabilityItemProps) {
   return (
     <div
       className={cn(
-        'border-b border-white/10 py-6 transition-all duration-300',
+        'border-b border-white/10 py-4 sm:py-6 transition-all duration-300',
         expanded ? 'bg-white/[0.02] px-4 rounded-lg border-white/20' : 'hover:border-white/20'
       )}
     >
       <button
         type="button"
         onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between text-left group focus-visible:outline-none"
+        className="w-full min-h-[44px] flex items-center justify-between text-left group focus-visible:outline-none py-1"
         aria-expanded={expanded}
       >
-        <div className="flex items-baseline gap-4 sm:gap-8">
+        <div className="flex items-baseline gap-3 sm:gap-8">
           <span className="font-mono text-xs sm:text-sm text-blue-400 font-bold">{capability.index}</span>
-          <h3 className="font-display text-2xl sm:text-4xl font-bold text-white group-hover:text-blue-300 transition-colors">
+          <h3 className="font-display text-xl sm:text-4xl font-bold text-white group-hover:text-blue-300 transition-colors">
             {capability.title}
           </h3>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <span className="hidden md:inline font-mono text-xs text-gray-400 tracking-wider">
             {capability.skills.length} EXPERTISES
           </span>
@@ -44,9 +44,9 @@ export function CapabilityItem({ capability }: CapabilityItemProps) {
         </div>
       </button>
 
-      <div className={cn('grid transition-all duration-300 ease-in-out', expanded ? 'grid-rows-[1fr] opacity-100 pt-6' : 'grid-rows-[0fr] opacity-0 overflow-hidden')}>
-        <div className="overflow-hidden space-y-6">
-          <p className="font-sans text-sm sm:text-base text-gray-300 max-w-3xl leading-relaxed">
+      <div className={cn('grid transition-all duration-300 ease-in-out', expanded ? 'grid-rows-[1fr] opacity-100 pt-4 sm:pt-6' : 'grid-rows-[0fr] opacity-0 overflow-hidden')}>
+        <div className="overflow-hidden space-y-4 sm:space-y-6">
+          <p className="font-sans text-xs sm:text-base text-gray-300 max-w-3xl leading-relaxed">
             {capability.description}
           </p>
 
@@ -54,7 +54,7 @@ export function CapabilityItem({ capability }: CapabilityItemProps) {
             <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest block">Capabilities &amp; Tools</span>
             <div className="flex flex-wrap gap-2">
               {capability.skills.map((skill) => (
-                <Badge key={skill} variant="icy">
+                <Badge key={skill} variant="icy" className="text-[10px]">
                   {skill}
                 </Badge>
               ))}
