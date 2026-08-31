@@ -1,4 +1,5 @@
 export type EvidenceType = 'Screenshot' | 'Video' | 'Architecture' | 'Prototype' | 'Interaction' | 'Code';
+export type ProjectDepartment = 'creative' | 'client';
 
 export interface ProjectMedia {
   type: 'image' | 'video' | 'interactive';
@@ -28,7 +29,10 @@ export interface Project {
   slug: string;
   title: string;
   tagline: string;
+  department: ProjectDepartment;
   client?: string;
+  brief?: string;
+  outcome?: string;
   year: string;
   role: string[];
   category: 'Product' | 'Web Platform' | 'AI Experiment' | 'Design System';

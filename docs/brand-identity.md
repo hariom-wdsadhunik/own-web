@@ -24,32 +24,26 @@
 | **`compact`** | `HARI / OM •` | Compact mobile headers, small viewports |
 | **`minimal`** | `OM •` | Favicon (`public/favicon.svg`), compact badges |
 
-### Brand Assets
-* **SVG Vector Assets:**
-  * Wordmark Vector: [`public/brand/hari-om-wordmark.svg`](file:///d:/own-web/public/brand/hari-om-wordmark.svg)
-  * Standalone Mark Vector: [`public/brand/hari-om-mark.svg`](file:///d:/own-web/public/brand/hari-om-mark.svg)
-  * Favicon Icon: [`public/favicon.svg`](file:///d:/own-web/public/favicon.svg)
-
 ---
 
-## 2. Typography System & Rules
+## 2. Typography System & Font Hierarchy
 
-### Font Families
-1. **DISPLAY (`Space Grotesk` / `font-display`):**
-   * **Usage:** Brand wordmark, Hero headlines, section titles, project names, and major editorial statements.
-   * **Tone:** Editorial, confident, modern grotesk.
+### Chosen Font Families
+1. **EDITORIAL DISPLAY (`Space Grotesk` / `font-display`):**
+   * **Usage:** Brand wordmark, Hero headlines, section titles, project titles, and major editorial statements.
+   * **Tone:** Refined, confident, modern grotesk.
 
-2. **BODY (`Inter` / `font-sans`):**
+2. **READABLE BODY (`Inter` / `font-sans`):**
    * **Usage:** All primary paragraph copy, descriptions, case study narratives, and body text.
    * **Tone:** Highly readable, neutral, spacious line height (`leading-relaxed`).
 
-3. **TECHNICAL (`font-mono`):**
+3. **TECHNICAL METADATA (`font-mono`):**
    * **Usage:** Restricted **ONLY** to indexes (`01`), status indicators, dates/years, tech tags, and technical metadata.
-   * **Tone:** Precision, system metadata.
+   * **Tone:** Precision system metadata.
 
 > [!CAUTION]
 > **MONOSPACE LIMITATION RULE:**
-> `font-mono` MUST NOT be used for body text, major headlines, brand wordmarks, or primary CTA button text. Monospace is an accent language for system metadata.
+> `font-mono` MUST NOT be used for body text, major headlines, brand wordmarks, or primary CTA button text. Monospace is strictly an accent language for system metadata.
 
 ---
 
@@ -57,7 +51,8 @@
 * **Base Dark Background:** `#07080a` (Deep Space Dark)
 * **Primary Text:** `#f8fafc` (Soft Off-White)
 * **Secondary Text:** `#94a3b8` (Muted Slate)
-* **Brand Signature Accent:** `#60a5fa` (Icy Blue)
+* **Creative Department Accent:** `#60a5fa` (Icy Blue)
+* **Client Department Accent:** `#34d399` (Emerald Slate)
 
 ---
 

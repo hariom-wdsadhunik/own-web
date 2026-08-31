@@ -1,6 +1,7 @@
 import { Hero } from '@/components/sections/Hero';
-import { SelectedWork } from '@/components/sections/SelectedWork';
+import { CreativeProjectsSection } from '@/components/sections/CreativeProjectsSection';
 import { StatementTransition } from '@/components/sections/StatementTransition';
+import { ClientProjectsSection } from '@/components/sections/ClientProjectsSection';
 import { CapabilitiesSection } from '@/components/sections/CapabilitiesSection';
 import { LabSection } from '@/components/sections/LabSection';
 import { ProcessSection } from '@/components/sections/ProcessSection';
@@ -11,8 +12,9 @@ export default function HomePage() {
   return (
     <div className="w-full space-y-12">
       <Hero />
-      <SelectedWork />
+      <CreativeProjectsSection />
       <StatementTransition />
+      <ClientProjectsSection />
       <CapabilitiesSection />
       <LabSection />
       <ProcessSection />

@@ -5,6 +5,14 @@ export function getPublicProjects(): Project[] {
   return PROJECTS.filter((project) => project.visibility === 'public');
 }
 
+export function getPublicCreativeProjects(): Project[] {
+  return PROJECTS.filter((project) => project.visibility === 'public' && project.department === 'creative');
+}
+
+export function getPublicClientProjects(): Project[] {
+  return PROJECTS.filter((project) => project.visibility === 'public' && project.department === 'client');
+}
+
 export function getPublicFeaturedProjects(): Project[] {
   return PROJECTS.filter((project) => project.visibility === 'public' && project.featured);
 }
