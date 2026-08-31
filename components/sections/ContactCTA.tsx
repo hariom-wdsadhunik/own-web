@@ -2,10 +2,15 @@ import { ArrowRight, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { CONTACT_INFO } from '@/content/contact';
 import { FadeIn } from '@/components/motion/FadeIn';
+import { DigitalAvatar } from '@/components/avatar/DigitalAvatar';
 
 export function ContactCTA() {
   return (
     <section id="contact" className="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 border-t border-white/10">
+      <FadeIn className="flex justify-center">
+        <DigitalAvatar size="md" state="shipping" />
+      </FadeIn>
+
       <FadeIn>
         <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
           INITIATE COLLABORATION

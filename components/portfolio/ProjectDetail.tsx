@@ -2,12 +2,12 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ExternalLink, Code } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Project } from '@/types/portfolio';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 import { Divider } from '@/components/ui/Divider';
 import { ProjectGallery } from './ProjectGallery';
+import { ProjectLinks } from './ProjectLinks';
 import { FadeIn } from '@/components/motion/FadeIn';
 
 export interface ProjectDetailProps {
@@ -148,20 +148,12 @@ export function ProjectDetail({ project, nextProject }: ProjectDetailProps) {
           </FadeIn>
         )}
 
-        {(project.liveUrl || project.githubUrl) && (
-          <FadeIn className="pt-8 border-t border-white/10 flex flex-wrap gap-4">
-            {project.liveUrl && (
-              <Button href={project.liveUrl} isExternal variant="primary" icon={<ExternalLink className="w-4 h-4" />}>
-                VISIT LIVE PRODUCT
-              </Button>
-            )}
-            {project.githubUrl && (
-              <Button href={project.githubUrl} isExternal variant="secondary" icon={<Code className="w-4 h-4" />}>
-                VIEW SOURCE CODE
-              </Button>
-            )}
-          </FadeIn>
-        )}
+        <FadeIn className="pt-8 border-t border-white/10">
+          <ProjectLinks
+            liveUrl={project.liveUrl}
+            githubUrl={project.githubUrl}
+          />
+        </FadeIn>
       </div>
 
       <Divider variant="muted" />

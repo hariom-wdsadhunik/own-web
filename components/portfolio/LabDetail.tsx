@@ -2,11 +2,11 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowRight, ExternalLink, Code } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { LabExperiment } from '@/types/portfolio';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 import { Divider } from '@/components/ui/Divider';
+import { ProjectLinks } from './ProjectLinks';
 import { FadeIn } from '@/components/motion/FadeIn';
 
 export interface LabDetailProps {
@@ -84,20 +84,12 @@ export function LabDetail({ experiment, nextExperiment }: LabDetailProps) {
           </div>
         </FadeIn>
 
-        {(experiment.demoUrl || experiment.githubUrl) && (
-          <FadeIn className="pt-8 border-t border-white/10 flex flex-wrap gap-4">
-            {experiment.demoUrl && (
-              <Button href={experiment.demoUrl} isExternal variant="primary" icon={<ExternalLink className="w-4 h-4" />}>
-                LAUNCH EXPERIMENT DEMO
-              </Button>
-            )}
-            {experiment.githubUrl && (
-              <Button href={experiment.githubUrl} isExternal variant="secondary" icon={<Code className="w-4 h-4" />}>
-                VIEW EXPERIMENT SOURCE
-              </Button>
-            )}
-          </FadeIn>
-        )}
+        <FadeIn className="pt-8 border-t border-white/10">
+          <ProjectLinks
+            demoUrl={experiment.demoUrl}
+            githubUrl={experiment.githubUrl}
+          />
+        </FadeIn>
       </div>
 
       <Divider variant="muted" />
