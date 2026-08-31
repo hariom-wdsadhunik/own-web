@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Sparkles } from 'lucide-react';
@@ -12,33 +14,39 @@ export function CreativeProjectsSection() {
 
   return (
     <section id="creative-work" className="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-      <SectionHeader
-        indexNumber="01"
-        eyebrow="DEPARTMENT 01 // CREATIVE PROJECTS"
-        title="Products, Experiments &amp; Explorations"
-        description="Products, experiments and ideas I built to explore what digital experiences could become."
-        actionSlot={
-          <div className="flex items-center gap-3">
-            <Badge variant="icy">
-              <Sparkles className="w-3 h-3 text-blue-400 shrink-0 inline-block mr-1" />
-              <span>EXPLORATORY ARCHIVE</span>
-            </Badge>
-          </div>
-        }
-      />
+      <FadeIn>
+        <SectionHeader
+          indexNumber="01"
+          eyebrow="DEPARTMENT 01 // CREATIVE PROJECTS"
+          title="Products, Experiments &amp; Explorations"
+          description="Products, experiments and ideas I built to explore what digital experiences could become."
+          actionSlot={
+            <div className="flex items-center gap-3">
+              <Badge variant="icy">
+                <Sparkles className="w-3 h-3 text-blue-400 shrink-0 inline-block mr-1" />
+                <span>EXPLORATORY ARCHIVE</span>
+              </Badge>
+            </div>
+          }
+        />
+      </FadeIn>
 
       <div className="space-y-28 sm:space-y-36">
         {creativeProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
           return (
-            <FadeIn key={project.id} className="group">
+            <FadeIn
+              key={project.id}
+              delay={0.1}
+              className="group"
+            >
               <div
                 className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
                   isEven ? '' : 'lg:flex-row-reverse'
                 }`}
               >
-                {/* Visual Media Showcase */}
+                {/* Visual Media Showcase Frame */}
                 <div className={`lg:col-span-7 ${isEven ? '' : 'lg:order-2'}`}>
                   <Link href={`/work/${project.slug}`} className="block group/media">
                     <ProjectPreview
@@ -47,52 +55,62 @@ export function CreativeProjectsSection() {
                       category={project.category}
                       year={project.year}
                       status={project.status}
-                      className="transition-transform duration-500 group-hover/media:scale-[1.02]"
+                      className="transition-all duration-700 ease-out group-hover/media:scale-[1.02] group-hover/media:shadow-2xl group-hover/media:shadow-blue-500/10"
                     />
                   </Link>
                 </div>
 
                 {/* Editorial Metadata & Context */}
                 <div className={`lg:col-span-5 space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <span className="font-mono text-xs text-blue-400 font-bold tracking-widest">
-                      0{(idx + 1).toString()}
-                    </span>
-                    <Badge variant="icy" dot>{project.status}</Badge>
-                    <Badge variant="outline">{project.year}</Badge>
-                    <span className="font-mono text-xs text-gray-500 uppercase">// {project.category}</span>
-                  </div>
+                  <FadeIn delay={0.15}>
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className="font-mono text-xs text-blue-400 font-bold tracking-widest">
+                        0{(idx + 1).toString()}
+                      </span>
+                      <Badge variant="icy" dot>{project.status}</Badge>
+                      <Badge variant="outline">{project.year}</Badge>
+                      <span className="font-mono text-xs text-gray-500 uppercase">// {project.category}</span>
+                    </div>
+                  </FadeIn>
 
-                  <div className="space-y-3">
-                    <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
-                      <Link href={`/work/${project.slug}`}>{project.title}</Link>
-                    </h3>
-                    <p className="font-sans text-base sm:text-lg text-gray-300 leading-relaxed font-normal">
-                      {project.tagline}
+                  <FadeIn delay={0.25}>
+                    <div className="space-y-3">
+                      <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
+                        <Link href={`/work/${project.slug}`}>{project.title}</Link>
+                      </h3>
+                      <p className="font-sans text-base sm:text-lg text-gray-300 leading-relaxed font-normal">
+                        {project.tagline}
+                      </p>
+                    </div>
+                  </FadeIn>
+
+                  <FadeIn delay={0.35}>
+                    <p className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-3">
+                      {project.summary}
                     </p>
-                  </div>
+                  </FadeIn>
 
-                  <p className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-3">
-                    {project.summary}
-                  </p>
+                  <FadeIn delay={0.45}>
+                    <div className="flex flex-wrap gap-1.5 pt-2">
+                      {project.techStack.map((tech) => (
+                        <Badge key={tech} variant="outline" className="text-[10px]">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </FadeIn>
 
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {project.techStack.map((tech) => (
-                      <Badge key={tech} variant="outline" className="text-[10px]">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  <div className="pt-3">
-                    <Link
-                      href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-semibold tracking-wider min-h-[44px]"
-                    >
-                      <span>EXPLORE CREATIVE CASE STUDY</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </div>
+                  <FadeIn delay={0.55}>
+                    <div className="pt-3">
+                      <Link
+                        href={`/work/${project.slug}`}
+                        className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-semibold tracking-wider min-h-[44px]"
+                      >
+                        <span>EXPLORE CREATIVE CASE STUDY</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </div>
+                  </FadeIn>
                 </div>
               </div>
             </FadeIn>

@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { CinematicBackground } from '@/components/ui/CinematicBackground';
 import { PointerFollower } from '@/components/ui/PointerFollower';
+import { ScrollProgress } from '@/components/ui/ScrollProgress';
 import { SITE_CONFIG, getCanonicalUrl } from '@/lib/site';
 
 const spaceGrotesk = Space_Grotesk({
@@ -64,6 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} antialiased`}>
       <body className="font-sans bg-[#07080a] text-gray-100 min-h-screen flex flex-col selection:bg-blue-500/20 selection:text-white">
+        <ScrollProgress />
         <CinematicBackground />
         <PointerFollower />
         <Header />
