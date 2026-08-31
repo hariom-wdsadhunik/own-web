@@ -5,14 +5,14 @@
 
 ---
 
-## 1. Project Evidence Status Inventory
+## 1. Project Evidence & Visibility Status Inventory
 
-| Project ID | Title | Category | Project Status | Narrative Complete? | Real Hero Asset? | Real Gallery Assets? | Live Demo? | GitHub Source? | Overall Status |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `leadpilot` | LeadPilot | Product | Production | Yes | Pending Asset | Pending Asset | Available | Available | `PARTIAL` |
-| `tradestak` | TradeStak | Web Platform | Production | Yes | Pending Asset | Pending Asset | Available | Available | `PARTIAL` |
-| `internet-time-capsule` | Internet Time Capsule | AI Experiment | Active Prototype | Yes | Pending Asset | Pending Asset | Available | Available | `PARTIAL` |
-| `athena` | ATHENA | AI Experiment | Active Prototype | Yes | Pending Asset | Pending Asset | Available | Available | `PARTIAL` |
+| Project ID | Title | Visibility | Public Presentation | Reason / Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| `leadpilot` | LeadPilot | `PRIVATE` | Disabled | Pending public deployment |
+| `tradestak` | TradeStak | `PUBLIC` | Active | Live Production Web Platform |
+| `internet-time-capsule` | Internet Time Capsule | `PUBLIC` | Active | Live Active Prototype |
+| `athena` | ATHENA | `PUBLIC` | Active | Live Active Prototype |
 
 ---
 
@@ -20,12 +20,5 @@
 
 | Lab ID | Title | Status | Narrative Complete? | Prototype Links? | Status Label |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `internet-time-capsule` | Internet Time Capsule | Active Prototype | Yes | Available | `PARTIAL` |
-| `athena` | ATHENA System Agent | Active Prototype | Yes | Available | `PARTIAL` |
-
----
-
-## 3. Transparency & Fallback Protocol
-
-- **Zero Fake Data:** No fake metrics, fabricated client quotes, or generated stock photos are used.
-- **Media Fallback:** Projects in `PARTIAL` status render high-contrast, dark editorial placeholder frames (`ProjectMedia.tsx`) clearly labeled with project categories until screen captures are ingested.
+| `internet-time-capsule` | Internet Time Capsule | Active Prototype | Yes | Available | `PUBLIC` |
+| `athena` | ATHENA System Agent | Active Prototype | Yes | Available | `PUBLIC` |

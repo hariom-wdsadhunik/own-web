@@ -33,6 +33,7 @@ export interface Project {
   role: string[];
   category: 'Product' | 'Web Platform' | 'AI Experiment' | 'Design System';
   featured: boolean;
+  visibility: 'public' | 'private';
   heroImage: ProjectMedia;
   summary: string;
   problemStatement?: string;

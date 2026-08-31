@@ -1,68 +1,91 @@
+import React from 'react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
+import { getPublicFeaturedProjects } from '@/lib/projects';
 import { SectionHeader } from '@/components/ui/SectionHeader';
+import { Badge } from '@/components/ui/Badge';
 import { ProjectPreview } from '@/components/portfolio/ProjectPreview';
-import { ProjectMeta } from '@/components/portfolio/ProjectMeta';
-import { TextLink } from '@/components/ui/TextLink';
-import { PROJECTS } from '@/content/projects';
 import { FadeIn } from '@/components/motion/FadeIn';
 
 export function SelectedWork() {
+  const featuredProjects = getPublicFeaturedProjects();
+
   return (
-    <section id="work" className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <FadeIn>
-        <SectionHeader
-          indexNumber="01"
-          eyebrow="SELECTED WORK"
-          title="Curated Digital Products &amp; Platforms"
-          description="A collection of production digital products, high-density web platforms, and experimental AI interfaces."
-        />
-      </FadeIn>
+    <section id="work" className="py-24 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <SectionHeader
+        indexNumber="01"
+        title="SELECTED WORK"
+        description="A curated selection of digital products, web platforms, and experimental interface architectures."
+        actionSlot={
+          <Link
+            href="/work"
+            className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 hover:text-blue-300 transition-colors group tracking-wider uppercase"
+          >
+            <span>VIEW ALL WORK ({featuredProjects.length})</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        }
+      />
 
       <div className="space-y-24">
-        {PROJECTS.map((project, idx) => {
+        {featuredProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
           return (
-            <FadeIn key={project.id}>
+            <FadeIn key={project.id} className="group">
               <div
-                className={`grid grid-cols-1 lg:grid-cols-12 gap-8 items-center ${
+                className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
                   isEven ? '' : 'lg:flex-row-reverse'
                 }`}
               >
-                <div className={`lg:col-span-7 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-                  <ProjectPreview
-                    media={project.heroImage}
-                    title={project.title}
-                    category={project.category}
-                    year={project.year}
-                    status={project.status}
-                  />
+                <div className={`lg:col-span-7 ${isEven ? '' : 'lg:order-2'}`}>
+                  <Link href={`/work/${project.slug}`} className="block">
+                    <ProjectPreview
+                      media={project.heroImage}
+                      title={project.title}
+                      category={project.category}
+                      year={project.year}
+                      status={project.status}
+                    />
+                  </Link>
                 </div>
 
-                <div className={`lg:col-span-5 space-y-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
-                  <div className="space-y-2">
-                    <span className="font-mono text-xs text-blue-400 uppercase tracking-widest">
-                      0{idx + 1} // {project.category}
-                    </span>
-                    <h3 className="font-display text-3xl sm:text-4xl font-bold text-white">
-                      {project.title}
-                    </h3>
+                <div className={`lg:col-span-5 space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
+                  <div className="flex items-center gap-3">
+                    <Badge variant="icy" dot>{project.status}</Badge>
+                    <Badge variant="outline">{project.year}</Badge>
+                    <span className="font-mono text-xs text-gray-500 uppercase">// {project.category}</span>
                   </div>
 
-                  <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
+                  <div className="space-y-2">
+                    <h3 className="font-display text-3xl sm:text-4xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                      <Link href={`/work/${project.slug}`}>{project.title}</Link>
+                    </h3>
+                    <p className="font-sans text-sm sm:text-base text-gray-300 leading-relaxed">
+                      {project.tagline}
+                    </p>
+                  </div>
+
+                  <p className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-3">
                     {project.summary}
                   </p>
 
-                  <ProjectMeta
-                    role={project.role}
-                    techStack={project.techStack}
-                    year={project.year}
-                    category={project.category}
-                  />
+                  <div className="flex flex-wrap gap-1.5 pt-2">
+                    {project.techStack.map((tech) => (
+                      <Badge key={tech} variant="outline" className="text-[10px]">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
 
                   <div className="pt-2">
-                    <TextLink href={`/work/${project.slug}`} arrow="right">
-                      VIEW CASE STUDY
-                    </TextLink>
+                    <Link
+                      href={`/work/${project.slug}`}
+                      className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-medium tracking-wider"
+                    >
+                      <span>READ CASE STUDY</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
                   </div>
                 </div>
               </div>

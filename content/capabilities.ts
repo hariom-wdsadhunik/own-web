@@ -1,40 +1,46 @@
 import { CapabilityCategory } from '@/types/portfolio';
 
-export const CAPABILITIES: CapabilityCategory[] = [
+export const CAPABILITY_CATEGORIES: CapabilityCategory[] = [
   {
-    id: 'product',
+    id: 'product-thinking',
     index: '01',
-    title: 'PRODUCT',
-    tagline: 'Strategic scoping, user-centric problem solving & MVP definition.',
-    description: 'Transforming ambiguous goals into validated digital products through deliberate scoping, information architecture, and core utility prioritization.',
-    skills: ['Product Thinking', 'MVP Scoping', 'Feature Prioritization', 'User Workflow Mapping'],
-    proofProjectIds: ['leadpilot', 'tradestak'],
+    title: 'PRODUCT THINKING',
+    tagline: 'Transforming complex domain requirements into cohesive digital products.',
+    description:
+      'Designing products with high utility, clear user workflows, and scalable feature architectures. Grounded in user research, functional prioritization, and rapid prototyping.',
+    skills: ['Product Scope Definition', 'User Journey Architecture', 'Feature Prioritization', 'MVP Engineering'],
+    proofProjectIds: ['tradestak'],
   },
   {
-    id: 'design',
+    id: 'ui-ux-architecture',
     index: '02',
-    title: 'DESIGN',
-    tagline: 'UI/UX design systems, dark editorial aesthetics & interaction craft.',
-    description: 'Constructing scalable design systems, visual component libraries, high-contrast dark interfaces, and tactile micro-interactions.',
-    skills: ['UI/UX Architecture', 'Design Systems', 'Dark Editorial Aesthetics', 'Interaction Design'],
+    title: 'UI/UX ARCHITECTURE',
+    tagline: 'Creating intuitive interfaces, systematic design tokens, and fluid interactions.',
+    description:
+      'Developing production-grade design systems with strict visual hierarchy, accessible color palettes, responsive layouts, and interactive micro-animations.',
+    skills: ['Design System Tokens', 'Information Architecture', 'Interaction Design', 'Accessibility (WCAG AA)'],
     proofProjectIds: ['tradestak', 'internet-time-capsule'],
   },
   {
-    id: 'build',
+    id: 'web-engineering',
     index: '03',
-    title: 'BUILD',
-    tagline: 'High-performance Next.js/React engineering & responsive architecture.',
-    description: 'Engineering resilient frontend applications with clean component architecture, optimal static rendering, fluid layout math, and strict TypeScript types.',
-    skills: ['Next.js 15 (App Router)', 'React 19 & TypeScript', 'Tailwind CSS v4', 'Performance & Accessibility'],
-    proofProjectIds: ['leadpilot', 'tradestak', 'internet-time-capsule', 'athena'],
+    title: 'WEB ENGINEERING',
+    tagline: 'Building high-performance, accessible, and scalable web applications.',
+    description:
+      'Crafting robust web applications with modern Next.js App Router, React Server Components, TypeScript, and optimized asset pipelines.',
+    skills: ['Next.js App Router', 'TypeScript Engineering', 'State & Data Pipeline', 'Performance Optimization'],
+    proofProjectIds: ['tradestak', 'internet-time-capsule', 'athena'],
   },
   {
-    id: 'ai',
+    id: 'ai-experimentation',
     index: '04',
-    title: 'AI & EXPERIMENTS',
-    tagline: 'LLM integration, agentic workflows & rapid laboratory prototyping.',
-    description: 'Embedding intelligent AI agents, prompt engineering pipelines, and conversational interfaces directly into modern web applications.',
-    skills: ['LLM & API Integration', 'Agentic Workflow Design', 'Prompt Engineering', 'Rapid AI Prototyping'],
-    proofProjectIds: ['athena', 'leadpilot', 'internet-time-capsule'],
+    title: 'AI & PRODUCT EXPERIMENTAL',
+    tagline: 'Exploring autonomous agents, LLM orchestration, and spatial interfaces.',
+    description:
+      'Pushing creative boundary conditions by integrating multi-agent reasoning, cognitive tool calls, and spatial audio-visual storytelling.',
+    skills: ['Autonomous Agent Systems', 'LLM Function Calling', 'Prompt Architecture', 'Spatial Web Audio'],
+    proofProjectIds: ['athena', 'internet-time-capsule'],
   },
 ];
+
+export const CAPABILITIES = CAPABILITY_CATEGORIES;

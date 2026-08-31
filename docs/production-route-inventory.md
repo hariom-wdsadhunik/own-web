@@ -10,10 +10,10 @@
 | `/` | Static (SSG) | Yes | Primary Narrative Homepage | Verified |
 | `/_not-found` | Static (SSG) | No | Custom 404 Error Experience | Verified |
 | `/work` | Static (SSG) | Yes | All Selected Work & Case Studies Index | Verified |
-| `/work/leadpilot` | SSG | Yes | LeadPilot Product Case Study | Verified |
 | `/work/tradestak` | SSG | Yes | TradeStak Web Platform Case Study | Verified |
 | `/work/internet-time-capsule` | SSG | Yes | Internet Time Capsule Case Study | Verified |
 | `/work/athena` | SSG | Yes | ATHENA System Agent Case Study | Verified |
+| `/work/leadpilot` | N/A | No | Private (Returns 404) | Disabled |
 | `/lab` | Static (SSG) | Yes | Lab Experiments Index | Verified |
 | `/lab/internet-time-capsule` | SSG | Yes | Internet Time Capsule Lab Detail | Verified |
 | `/lab/athena` | SSG | Yes | ATHENA System Agent Lab Detail | Verified |

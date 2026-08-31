@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { PROJECTS } from '@/content/projects';
+import { getPublicProjects } from '@/lib/projects';
 import { EXPERIMENTS } from '@/content/experiments';
 import { getSiteUrl } from '@/lib/site';
 
@@ -14,7 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  const projectRoutes = PROJECTS.map((p) => ({
+  const publicProjects = getPublicProjects();
+  const projectRoutes = publicProjects.map((p) => ({
     url: `${baseUrl}/work/${p.slug}`,
     lastModified: currentDate,
     changeFrequency: 'monthly' as const,
