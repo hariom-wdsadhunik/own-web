@@ -6,6 +6,11 @@ import { Film } from 'lucide-react';
 import { ProjectMedia as ProjectMediaType } from '@/types/portfolio';
 import { Badge } from '@/components/ui/Badge';
 import { BrowserFrame } from './BrowserFrame';
+import { TradeStakVisual } from './visuals/TradeStakVisual';
+import { TimeCapsuleVisual } from './visuals/TimeCapsuleVisual';
+import { AthenaVisual } from './visuals/AthenaVisual';
+import { RentAMacVisual } from './visuals/RentAMacVisual';
+import { DentistVisual } from './visuals/DentistVisual';
 import { cn } from '@/lib/utils';
 
 export interface ProjectMediaProps {
@@ -35,6 +40,31 @@ export function ProjectMedia({
   };
 
   const ratioClass = aspectRatios[media.aspectRatio || '16:9'];
+  const titleLower = title.toLowerCase();
+
+  // Render Custom Vector Showcases when media.url is not set
+  if (!media.url) {
+    let VisualComponent = null;
+    if (titleLower.includes('tradestak')) {
+      VisualComponent = <TradeStakVisual />;
+    } else if (titleLower.includes('time capsule')) {
+      VisualComponent = <TimeCapsuleVisual />;
+    } else if (titleLower.includes('athena')) {
+      VisualComponent = <AthenaVisual />;
+    } else if (titleLower.includes('rent-a-mac') || titleLower.includes('rent a mac')) {
+      VisualComponent = <RentAMacVisual />;
+    } else if (titleLower.includes('dentist')) {
+      VisualComponent = <DentistVisual />;
+    }
+
+    if (VisualComponent) {
+      return (
+        <div className={cn('w-full rounded-xl overflow-hidden shadow-2xl relative border border-white/10 group transition-all duration-500 hover:border-cyan-400/40', ratioClass, className)}>
+          {VisualComponent}
+        </div>
+      );
+    }
+  }
 
   // 1. Real Image Render
   if (media.type === 'image' && media.url) {
@@ -98,7 +128,7 @@ export function ProjectMedia({
     );
   }
 
-  // 4. Simplified Pending Media Frame (Clean & Quiet)
+  // 4. Default Fallback Pending Media Frame
   return (
     <div
       className={cn(
@@ -118,7 +148,6 @@ export function ProjectMedia({
           </p>
         </div>
 
-        {/* Desktop Only Badges */}
         {(status || year) && (
           <div className="hidden lg:flex absolute top-4 left-4 z-30 items-center gap-2">
             {status && <Badge variant="icy" dot>{status}</Badge>}
