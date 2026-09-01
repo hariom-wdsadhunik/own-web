@@ -1,63 +1,50 @@
 'use client';
 
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { Home, Briefcase, Beaker, User } from 'lucide-react';
-import { cn } from '@/lib/utils';
-
-const NAV_ITEMS = [
-  { label: 'HOME', href: '/', icon: Home },
-  { label: 'WORK', href: '/work', icon: Briefcase },
-  { label: 'LAB', href: '/lab', icon: Beaker },
-  { label: 'ABOUT', href: '/#about', icon: User },
-];
+import React, { useState } from 'react';
+import { Layers, Mail, Github } from 'lucide-react';
+import { ContactModal } from '@/components/contact/ContactModal';
+import { CONTACT_INFO } from '@/content/contact';
 
 export function MobileBottomNav() {
-  const pathname = usePathname();
-
-  // Hide bottom navigation on detail routes (e.g. /work/[slug], /lab/[slug])
-  const isWorkDetail = pathname.startsWith('/work/') && pathname !== '/work';
-  const isLabDetail = pathname.startsWith('/lab/') && pathname !== '/lab';
-  const isNotFound = pathname === '/_not-found';
-
-  if (isWorkDetail || isLabDetail || isNotFound) {
-    return null;
-  }
+  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   return (
-    <nav
-      className="fixed bottom-0 left-0 right-0 z-40 md:hidden bg-[#07080a]/95 backdrop-blur-xl border-t border-white/10 px-3 py-1.5 pb-[calc(0.375rem+env(safe-area-inset-bottom))] shadow-2xl select-none"
-      aria-label="Mobile Bottom Navigation"
-    >
-      <div className="grid grid-cols-4 gap-1 max-w-md mx-auto">
-        {NAV_ITEMS.map((item) => {
-          const Icon = item.icon;
-          const isActive =
-            item.href === '/'
-              ? pathname === '/'
-              : pathname.startsWith(item.href);
+    <>
+      <div className="md:hidden fixed bottom-4 left-4 right-4 z-40">
+        <div className="flex items-center justify-around bg-[#0c0817]/95 backdrop-blur-2xl border border-purple-500/40 rounded-full p-2 shadow-2xl shadow-purple-500/25">
+          <a
+            href="#creative-work"
+            className="flex-1 min-h-[48px] py-2 px-3 rounded-full text-center text-xs font-mono font-bold text-slate-200 hover:text-white hover:bg-purple-950/50 flex items-center justify-center gap-1.5 transition-all"
+          >
+            <Layers className="w-4 h-4 text-purple-400" />
+            <span>WORK</span>
+          </a>
 
-          return (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={cn(
-                'min-h-[44px] flex flex-col items-center justify-center gap-1 rounded-lg py-1 px-2 transition-all duration-200 active:scale-95',
-                isActive
-                  ? 'bg-blue-500/10 text-blue-400 font-bold border-t-2 border-blue-400'
-                  : 'text-gray-400 hover:text-gray-200 hover:bg-white/5 border-t-2 border-transparent'
-              )}
-              aria-current={isActive ? 'page' : undefined}
-            >
-              <Icon className={cn('w-4 h-4 transition-transform', isActive && 'scale-110 text-blue-400')} />
-              <span className="font-display text-[10px] tracking-wider uppercase font-semibold">
-                {item.label}
-              </span>
-            </Link>
-          );
-        })}
+          <button
+            type="button"
+            onClick={() => setContactModalOpen(true)}
+            className="flex-1 min-h-[48px] py-2 px-3 rounded-full text-center text-xs font-mono font-extrabold text-white bg-gradient-to-r from-purple-600 to-fuchsia-600 shadow-lg shadow-purple-500/30 flex items-center justify-center gap-1.5 transition-all active:scale-95"
+          >
+            <Mail className="w-4 h-4 text-white" />
+            <span>CONNECT</span>
+          </button>
+
+          <a
+            href={CONTACT_INFO.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 min-h-[48px] py-2 px-3 rounded-full text-center text-xs font-mono font-bold text-slate-300 hover:text-white hover:bg-purple-950/50 flex items-center justify-center gap-1.5 transition-all"
+          >
+            <Github className="w-4 h-4 text-purple-400" />
+            <span>GITHUB</span>
+          </a>
+        </div>
       </div>
-    </nav>
+
+      <ContactModal
+        isOpen={contactModalOpen}
+        onClose={() => setContactModalOpen(false)}
+      />
+    </>
   );
 }
