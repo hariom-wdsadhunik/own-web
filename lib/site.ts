@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://hariom.dev',
   author: {
     name: 'Hari Om',
-    email: 'contact@hariom.dev',
+    email: 'wdsadhunik@gmail.com',
     github: 'https://github.com/hariom-wdsadhunik',
     linkedin: 'https://linkedin.com/in/hariom',
   },
