@@ -8,6 +8,8 @@ import { Badge } from '@/components/ui/Badge';
 import { FadeIn } from '@/components/motion/FadeIn';
 import { Reveal } from '@/components/motion/Reveal';
 import { ContactModal } from '@/components/contact/ContactModal';
+import { ShinyText } from '@/components/reactbits/ShinyText';
+import { DecryptedText } from '@/components/reactbits/DecryptedText';
 
 export function Hero() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
@@ -34,27 +36,28 @@ export function Hero() {
           style={{ y: heroY, opacity: heroOpacity }}
           className="space-y-8 sm:space-y-12 max-w-6xl relative z-10"
         >
-          {/* Top Ticker Array */}
+          {/* Top Ticker Array with DecryptedText */}
           <FadeIn delay={0.1}>
             <div className="flex items-center gap-3 flex-wrap">
               <Badge variant="icy" dot className="text-xs px-3.5 py-1 font-mono shadow-xl shadow-cyan-500/15 border border-cyan-400/50 bg-cyan-950/40">
-                AWWWARDS INSPIRED // 2026 EDITION
+                <DecryptedText text="AWWWARDS INSPIRED // 2026 EDITION" speed={40} />
               </Badge>
               <span className="font-mono text-xs text-purple-400 uppercase tracking-widest px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/30">
-                // HARI OM PORTFOLIO
+                // <DecryptedText text="HARI OM PORTFOLIO" speed={35} />
               </span>
               <span className="font-mono text-xs text-emerald-400 uppercase tracking-widest hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 font-bold">
                 <Zap className="w-3.5 h-3.5 text-emerald-400" />
-                SYSTEM 99.9% OPERATIONAL
+                <DecryptedText text="SYSTEM 99.9% OPERATIONAL" speed={45} />
               </span>
             </div>
           </FadeIn>
 
-          {/* Oversized Awwwards Headline Layout */}
+          {/* Oversized Display Headline with ShinyText */}
           <div className="space-y-4 sm:space-y-6">
             <Reveal delay={0.2}>
               <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-black tracking-tight text-white leading-[0.98] drop-shadow-2xl">
-                DIGITAL <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400">PRODUCT</span>
+                <ShinyText text="DIGITAL" speed={4} />{' '}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400">PRODUCT</span>
                 <br />
                 <span className="text-slate-200">ARCHITECT.</span>
               </h1>

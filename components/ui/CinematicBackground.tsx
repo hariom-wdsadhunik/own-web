@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
+import { Particles } from '@/components/reactbits/Particles';
 
 export function CinematicBackground() {
   const { scrollYProgress } = useScroll();
@@ -12,6 +13,9 @@ export function CinematicBackground() {
 
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#050608]">
+      {/* React Bits Interactive Particle Field */}
+      <Particles />
+
       {/* Animated Kinetic Neon Glow Orbs */}
       <motion.div
         style={{ y: orb1Y }}
