@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Clock } from 'lucide-react';
+import { ArrowRight, Clock, ExternalLink } from 'lucide-react';
 import { Project } from '@/types/portfolio';
 import { DepartmentSwitcher, FilterDepartment } from './DepartmentSwitcher';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -29,7 +29,7 @@ export function WorkIndexContainer({ initialProjects }: WorkIndexContainerProps)
         <SectionHeader
           indexNumber="01"
           title="WORK DIRECTORY"
-          description={`Exploring ${initialProjects.length.toString().padStart(2, '0')} public digital products, web platforms, and experimental interface architectures across two departments.`}
+          description={`Exploring ${initialProjects.length.toString().padStart(2, '0')} public digital products, web platforms, and commercial client deliveries across two departments.`}
         />
 
         <DepartmentSwitcher
@@ -53,7 +53,7 @@ export function WorkIndexContainer({ initialProjects }: WorkIndexContainerProps)
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12" id="department-projects-grid">
             {creativeProjects.map((project) => (
-              <FadeIn key={project.id} className="group flex flex-col justify-between p-8 rounded-xl bg-[#0f1117] border border-white/10 hover:border-blue-400/40 transition-all space-y-6">
+              <FadeIn key={project.id} className="group flex flex-col justify-between p-6 sm:p-8 rounded-xl bg-[#0f1117] border border-white/10 hover:border-blue-400/40 transition-all space-y-6">
                 <div className="space-y-6">
                   <Link href={`/work/${project.slug}`} className="block">
                     <ProjectPreview
@@ -80,7 +80,7 @@ export function WorkIndexContainer({ initialProjects }: WorkIndexContainerProps)
                     </p>
                   </div>
 
-                  <p className="font-sans text-xs text-gray-400 leading-relaxed line-clamp-3">
+                  <p className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-3">
                     {project.summary}
                   </p>
                 </div>
@@ -96,9 +96,9 @@ export function WorkIndexContainer({ initialProjects }: WorkIndexContainerProps)
 
                   <Link
                     href={`/work/${project.slug}`}
-                    className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-medium tracking-wider pt-2 min-h-[44px]"
+                    className="inline-flex items-center gap-2 font-display text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-bold tracking-wider pt-2 min-h-[44px]"
                   >
-                    <span>EXPLORE CASE STUDY</span>
+                    <span>EXPLORE PROJECT</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -122,7 +122,7 @@ export function WorkIndexContainer({ initialProjects }: WorkIndexContainerProps)
           {clientProjects.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
               {clientProjects.map((project) => (
-                <FadeIn key={project.id} className="group flex flex-col justify-between p-8 rounded-xl bg-[#0f1117] border border-white/10 hover:border-emerald-400/40 transition-all space-y-6">
+                <FadeIn key={project.id} className="group flex flex-col justify-between p-6 sm:p-8 rounded-xl bg-[#0f1117] border border-white/10 hover:border-emerald-400/40 transition-all space-y-6">
                   <div className="space-y-6">
                     <Link href={`/work/${project.slug}`} className="block">
                       <ProjectPreview
@@ -151,7 +151,7 @@ export function WorkIndexContainer({ initialProjects }: WorkIndexContainerProps)
                       </p>
                     </div>
 
-                    <p className="font-sans text-xs text-gray-400 leading-relaxed line-clamp-3">
+                    <p className="font-sans text-xs sm:text-sm text-gray-400 leading-relaxed line-clamp-3">
                       {project.summary}
                     </p>
                   </div>
@@ -165,13 +165,27 @@ export function WorkIndexContainer({ initialProjects }: WorkIndexContainerProps)
                       ))}
                     </div>
 
-                    <Link
-                      href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-2 font-mono text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-medium tracking-wider pt-2 min-h-[44px]"
-                    >
-                      <span>VIEW CLIENT CASE STUDY</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    <div className="flex items-center gap-4 flex-wrap pt-2">
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 font-display text-xs text-emerald-400 hover:text-emerald-300 font-bold tracking-wider min-h-[44px]"
+                        >
+                          <span>VIEW LIVE PROJECT</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
+                      )}
+
+                      <Link
+                        href={`/work/${project.slug}`}
+                        className="inline-flex items-center gap-2 font-display text-xs text-gray-400 hover:text-white transition-colors font-medium tracking-wider min-h-[44px]"
+                      >
+                        <span>CASE STUDY</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </div>
                   </div>
                 </FadeIn>
               ))}

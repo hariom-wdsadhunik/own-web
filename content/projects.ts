@@ -129,4 +129,65 @@ export const PROJECTS: Project[] = [
     deliverables: ['Multi-Agent Architecture', 'Execution Stream UI', 'Memory State Engine'],
     status: 'Active Prototype',
   },
+  {
+    id: 'rent-a-mac',
+    slug: 'rent-a-mac',
+    title: 'Rent-a-Mac',
+    tagline: 'On-demand hardware rental & workspace provisioning web platform.',
+    department: 'creative',
+    client: 'Hardware Rental Service',
+    year: '2025',
+    role: ['Product Design', 'UI/UX Architecture', 'Full-Stack Development'],
+    category: 'Product',
+    featured: true,
+    visibility: 'public',
+    heroImage: {
+      type: 'image',
+      alt: 'Rent-a-Mac Hardware Rental Platform Screenshot Placeholder',
+      caption: 'Rent-a-Mac — On-demand Hardware Rental Workspace',
+      aspectRatio: '16:9',
+    },
+    summary:
+      'Rent-a-Mac is a hardware rental platform enabling users to browse available Apple Mac hardware configurations, reserve rental periods, and request custom workspace pre-configurations for short-term and project-based workflows.',
+    problemStatement:
+      'Creative professionals and developers frequently need temporary high-performance Mac hardware for short-term projects or testing without long-term capital commitment.',
+    approach:
+      'Designed an intuitive rental reservation interface with real-time hardware availability checks, customizable software stack bundling, and streamlined checkout.',
+    designNotes:
+      'Created a sleek dark interface emphasizing hardware specifications, clear pricing tiers, and minimal step-by-step reservation flows.',
+    engineeringNotes:
+      'Built with Next.js, React, TypeScript, and Tailwind CSS with optimistic reservation state handling and responsive layout optimization.',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    deliverables: ['Hardware Catalog UI', 'Reservation Flow', 'Workspace Stack Builder'],
+    status: 'Production',
+  },
+  {
+    id: 'dentist-portfolio',
+    slug: 'dentist-portfolio',
+    title: 'Dentist Portfolio Website',
+    tagline: 'Modern dental practice web experience & appointment showcase.',
+    department: 'client',
+    client: 'Dental Practice',
+    year: '2025',
+    role: ['Client Web Design', 'Frontend Development'],
+    category: 'Product',
+    featured: true,
+    visibility: 'public',
+    liveUrl: 'https://dentist-portfolio-website.vercel.app/',
+    heroImage: {
+      type: 'image',
+      alt: 'Dentist Portfolio Website Live Showcase Placeholder',
+      caption: 'Dentist Portfolio Website — Production Client Web Experience',
+      aspectRatio: '16:9',
+    },
+    summary:
+      'A clean, modern web experience for a professional dental practice, featuring clear service presentations, mobile-first appointment CTA flows, and accessible healthcare design.',
+    designNotes:
+      'Designed with accessible typography, reassuring medical color palettes, and frictionless mobile appointment scheduling access.',
+    engineeringNotes:
+      'Engineered with modern frontend framework components, responsive mobile layout optimization, and high performance asset loading.',
+    techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    deliverables: ['Client Web Design', 'Frontend Development', 'Responsive Layout System'],
+    status: 'Production',
+  },
 ];
