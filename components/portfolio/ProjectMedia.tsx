@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Terminal, Layers, Film, Cpu } from 'lucide-react';
+import { Film } from 'lucide-react';
 import { ProjectMedia as ProjectMediaType } from '@/types/portfolio';
 import { Badge } from '@/components/ui/Badge';
 import { BrowserFrame } from './BrowserFrame';
@@ -98,49 +98,29 @@ export function ProjectMedia({
     );
   }
 
-  // 4. Intentional Media Archive Pending Frame (Clean & Non-Intrusive Overlay)
+  // 4. Simplified Pending Media Frame (Clean & Quiet)
   return (
     <div
       className={cn(
-        'w-full rounded-xl overflow-hidden bg-[#0f1117] border border-white/10 relative group transition-all duration-500',
+        'w-full rounded-xl overflow-hidden bg-[#0a0c10] border border-white/10 relative group transition-all duration-500',
         'hover:border-blue-400/40 hover:shadow-2xl hover:shadow-blue-500/5',
         ratioClass,
         className
       )}
     >
       <div className="w-full h-full bg-[#07080a] relative flex items-center justify-center overflow-hidden p-6 text-center">
-        <div className="absolute inset-0 bg-noise opacity-10 pointer-events-none" />
-
-        <div className="absolute w-48 h-48 rounded-full bg-blue-500/10 blur-3xl group-hover:bg-blue-400/20 transition-all duration-700 pointer-events-none" />
-
-        <div className="relative z-20 flex flex-col items-center gap-3 text-center max-w-md">
-          <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-500">
-            {category === 'Product' ? (
-              <Terminal className="w-6 h-6" />
-            ) : category === 'AI Experiment' ? (
-              <Cpu className="w-6 h-6" />
-            ) : (
-              <Layers className="w-6 h-6" />
-            )}
-          </div>
-
-          <div className="space-y-1.5">
-            <span className="font-mono text-[10px] text-blue-400 uppercase tracking-widest block font-bold">
-              [MEDIA ARCHIVE // PRODUCTION CAPTURE IN REVIEW]
-            </span>
-            <p className="font-display text-xl font-bold text-gray-100 group-hover:text-white transition-colors">
-              {title}
-            </p>
-            {media.caption && (
-              <p className="font-mono text-[11px] text-gray-400 pt-1 leading-relaxed">
-                {media.caption}
-              </p>
-            )}
-          </div>
+        <div className="relative z-20 flex flex-col items-center gap-2 text-center max-w-md px-4">
+          <span className="font-mono text-xs text-blue-400 font-bold uppercase tracking-widest block">
+            MEDIA PENDING
+          </span>
+          <p className="font-mono text-[11px] text-gray-400">
+            Production capture required.
+          </p>
         </div>
 
+        {/* Desktop Only Badges */}
         {(status || year) && (
-          <div className="absolute top-4 left-4 z-30 flex items-center gap-2">
+          <div className="hidden lg:flex absolute top-4 left-4 z-30 items-center gap-2">
             {status && <Badge variant="icy" dot>{status}</Badge>}
             {year && <Badge variant="outline">{year}</Badge>}
           </div>

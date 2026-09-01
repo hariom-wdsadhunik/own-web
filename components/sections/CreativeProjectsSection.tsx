@@ -23,25 +23,25 @@ export function CreativeProjectsSection() {
         />
       </FadeIn>
 
-      <div className="space-y-16 sm:space-y-36">
+      <div className="space-y-20 sm:space-y-36">
         {creativeProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
           return (
             <FadeIn key={project.id} delay={0.1} className="group">
-              {/* MOBILE ONLY COMPOSITION (Clean Feature Panel Sequence) */}
-              <div className="block lg:hidden space-y-4 pb-12 border-b border-white/10 last:border-b-0">
-                {/* 1. PROJECT NUMBER */}
+              {/* MOBILE FEATURE PANEL SEQUENCE */}
+              <div className="block lg:hidden space-y-5 pb-16 border-b border-white/10 last:border-b-0">
+                {/* 1. INDEX */}
                 <span className="font-mono text-xs text-blue-400 font-bold tracking-widest block">
                   0{(idx + 1).toString()} / CREATIVE
                 </span>
 
-                {/* 2. PROJECT TITLE (32px-44px Large Display) */}
+                {/* 2. LARGE TITLE (32px - 44px) */}
                 <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
                   <Link href={`/work/${project.slug}`}>{project.title}</Link>
                 </h3>
 
-                {/* 3. LARGE PROJECT VISUAL (100% Content Width) */}
+                {/* 3. FEATURED VISUAL (100% Content Width) */}
                 <div className="pt-2">
                   <Link href={`/work/${project.slug}`} className="block group/media">
                     <ProjectPreview
@@ -60,12 +60,12 @@ export function CreativeProjectsSection() {
                   {project.category}
                 </span>
 
-                {/* 5. ONE SHORT DESCRIPTION */}
+                {/* 5. ONE SHORT DESCRIPTION (Tagline only) */}
                 <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
                   {project.tagline}
                 </p>
 
-                {/* 6. ACTION */}
+                {/* 6. PRIMARY ACTION */}
                 <div className="pt-2">
                   {project.liveUrl ? (
                     <a
@@ -89,7 +89,7 @@ export function CreativeProjectsSection() {
                 </div>
               </div>
 
-              {/* DESKTOP ONLY COMPOSITION (100% Preserved Desktop Layout) */}
+              {/* DESKTOP 12-COLUMN GRID (100% Preserved Desktop Layout) */}
               <div
                 className={`hidden lg:grid grid-cols-12 gap-12 items-center ${
                   isEven ? '' : 'flex-row-reverse'
