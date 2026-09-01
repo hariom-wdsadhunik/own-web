@@ -141,6 +141,7 @@ export const PROJECTS: Project[] = [
     category: 'Product',
     featured: true,
     visibility: 'public',
+    liveUrl: 'https://rent-a-mac.wdsadhunik.workers.dev/',
     heroImage: {
       type: 'image',
       alt: 'Rent-a-Mac Hardware Rental Platform Screenshot Placeholder',
