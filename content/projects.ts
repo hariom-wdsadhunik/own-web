@@ -77,6 +77,7 @@ export const PROJECTS: Project[] = [
     category: 'AI Experiment',
     featured: true,
     visibility: 'public',
+    liveUrl: 'https://internet-time-capsule.wdsadhunik.workers.dev/',
     heroImage: {
       type: 'image',
       alt: 'Internet Time Capsule Timeline View Placeholder',
