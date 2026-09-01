@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Particles } from '@/components/reactbits/Particles';
+import { ShapeGrid } from '@/components/reactbits/ShapeGrid';
 
 export function CinematicBackground() {
   const { scrollYProgress } = useScroll();
@@ -12,6 +13,19 @@ export function CinematicBackground() {
 
   return (
     <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden bg-[#040209]">
+      {/* React Bits Interactive Animated ShapeGrid Backdrop */}
+      <div className="absolute inset-0 opacity-40">
+        <ShapeGrid
+          speed={0.5}
+          squareSize={45}
+          direction="diagonal"
+          borderColor="rgba(168, 85, 247, 0.12)"
+          hoverFillColor="rgba(217, 70, 239, 0.35)"
+          shape="square"
+          hoverTrailAmount={6}
+        />
+      </div>
+
       {/* React Bits Interactive Particle Field */}
       <Particles />
 
