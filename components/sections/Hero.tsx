@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { ArrowRight, Terminal, Sparkles, Zap, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Terminal, Sparkles, Star, ShieldCheck, Code, Check } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
@@ -10,9 +10,11 @@ import { Reveal } from '@/components/motion/Reveal';
 import { ContactModal } from '@/components/contact/ContactModal';
 import { ShinyText } from '@/components/reactbits/ShinyText';
 import { DecryptedText } from '@/components/reactbits/DecryptedText';
+import { CONTACT_INFO } from '@/content/contact';
 
 export function Hero() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
+  const [copiedCode, setCopiedCode] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -22,97 +24,132 @@ export function Hero() {
   const heroY = useTransform(scrollYProgress, [0, 1], ['0%', '-15%']);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
 
+  const codeSnippet = `import { ProductArchitect } from '@/portfolio';
+
+const architect = new ProductArchitect({
+  name: "Hari Om",
+  role: "UI/UX & Web Engineering",
+  performance: "60 FPS Canvas",
+  lighthouse: 100,
+  stack: ["Next.js", "React", "TypeScript", "Tailwind"]
+});
+
+export default architect.build();`;
+
+  const handleCopyCode = () => {
+    navigator.clipboard.writeText(codeSnippet);
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2000);
+  };
+
   return (
     <>
       <section
         ref={containerRef}
-        className="relative min-h-[90svh] sm:min-h-[95vh] flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-32 overflow-hidden select-none"
+        className="relative min-h-[90svh] sm:min-h-[95vh] flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-28 overflow-hidden select-none"
       >
-        {/* Kinetic Neon Aura Backdrops */}
-        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] rounded-full bg-cyan-500/15 blur-[160px] pointer-events-none" />
-        <div className="absolute bottom-10 right-0 w-[550px] h-[550px] rounded-full bg-purple-500/15 blur-[170px] pointer-events-none" />
-
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
-          className="space-y-8 sm:space-y-12 max-w-6xl relative z-10"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10"
         >
-          {/* Top Ticker Array with DecryptedText */}
-          <FadeIn delay={0.1}>
-            <div className="flex items-center gap-3 flex-wrap">
-              <Badge variant="icy" dot className="text-xs px-3.5 py-1 font-mono shadow-xl shadow-cyan-500/15 border border-cyan-400/50 bg-cyan-950/40">
-                <DecryptedText text="AWWWARDS INSPIRED // 2026 EDITION" speed={40} />
-              </Badge>
-              <span className="font-mono text-xs text-purple-400 uppercase tracking-widest px-3 py-1 rounded-lg bg-purple-500/10 border border-purple-500/30">
-                // <DecryptedText text="HARI OM PORTFOLIO" speed={35} />
-              </span>
-              <span className="font-mono text-xs text-emerald-400 uppercase tracking-widest hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 font-bold">
-                <Zap className="w-3.5 h-3.5 text-emerald-400" />
-                <DecryptedText text="SYSTEM 99.9% OPERATIONAL" speed={45} />
-              </span>
+          {/* Left Column: Headline & Controls */}
+          <div className="lg:col-span-7 space-y-8">
+            {/* ReactBits Pill Badge */}
+            <FadeIn delay={0.1}>
+              <div className="flex items-center gap-3 flex-wrap">
+                <Badge variant="icy" dot className="text-xs px-4 py-1.5 font-mono shadow-xl shadow-purple-500/20 border border-purple-500/50 bg-purple-950/50 text-purple-200">
+                  <DecryptedText text="REACT BITS POWERED // 2026" speed={40} />
+                </Badge>
+                <span className="font-mono text-xs text-fuchsia-400 uppercase tracking-widest px-3.5 py-1 rounded-full bg-fuchsia-500/10 border border-fuchsia-500/30 font-bold">
+                  <DecryptedText text="HARI OM PORTFOLIO" speed={35} />
+                </span>
+              </div>
+            </FadeIn>
+
+            {/* ReactBits Style Headline */}
+            <div className="space-y-4">
+              <Reveal delay={0.2}>
+                <h1 className="font-display text-4xl sm:text-6xl lg:text-[5.25rem] font-black tracking-tight text-white leading-[1.02]">
+                  Digital Products for{' '}
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-400 to-cyan-300">
+                    <ShinyText text="creative developers" speed={4} />
+                  </span>
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.35}>
+                <p className="font-sans text-base sm:text-xl text-slate-300 max-w-xl leading-relaxed font-normal">
+                  Engineering high-performance web products, interactive Web3/AI platforms, and expressive visual interface systems with rich editorial craft.
+                </p>
+              </Reveal>
             </div>
-          </FadeIn>
 
-          {/* Oversized Display Headline with ShinyText */}
-          <div className="space-y-4 sm:space-y-6">
-            <Reveal delay={0.2}>
-              <h1 className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-black tracking-tight text-white leading-[0.98] drop-shadow-2xl">
-                <ShinyText text="DIGITAL" speed={4} />{' '}
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400">PRODUCT</span>
-                <br />
-                <span className="text-slate-200">ARCHITECT.</span>
-              </h1>
-            </Reveal>
+            {/* Action Buttons matching reactbits.dev */}
+            <FadeIn delay={0.45}>
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                <a
+                  href="#creative-work"
+                  className="w-full sm:w-auto min-h-[50px] px-8 rounded-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-purple-500 hover:from-purple-500 hover:to-fuchsia-500 text-white text-xs font-mono font-extrabold flex items-center justify-center gap-2.5 shadow-2xl shadow-purple-500/30 transition-all hover:scale-105"
+                >
+                  <span>EXPLORE WORK →</span>
+                </a>
 
-            <Reveal delay={0.35}>
-              <p className="font-display text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight text-cyan-300/90 leading-tight flex items-center gap-3 flex-wrap">
-                <span>UI/UX Architecture &amp; Web Engineering</span>
-                <Sparkles className="w-7 h-7 text-purple-400 hidden sm:inline animate-pulse" />
-              </p>
-            </Reveal>
+                <a
+                  href={CONTACT_INFO.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto min-h-[50px] px-8 rounded-full border border-purple-500/40 bg-slate-950/80 hover:bg-purple-950/40 text-slate-200 hover:text-white text-xs font-mono font-bold flex items-center justify-center gap-2.5 transition-all shadow-xl hover:border-purple-400"
+                >
+                  <Star className="w-4 h-4 text-purple-400 fill-purple-400" />
+                  <span>STAR ON GITHUB</span>
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => setContactModalOpen(true)}
+                  className="w-full sm:w-auto min-h-[50px] px-6 rounded-full border border-slate-800 bg-slate-900/60 text-xs font-mono font-bold text-slate-400 hover:text-white transition-colors"
+                >
+                  CONNECT ↗
+                </button>
+              </div>
+            </FadeIn>
           </div>
 
-          <FadeIn delay={0.45}>
-            <p className="font-sans text-base sm:text-2xl text-slate-300 max-w-3xl leading-relaxed font-normal border-l-4 border-cyan-400/80 pl-4 sm:pl-6 py-2 bg-gradient-to-r from-cyan-500/5 to-transparent rounded-r-xl">
-              Engineering high-performance digital products, interactive Web3/AI platforms, and expressive visual interface systems with rich editorial craft.
-            </p>
-          </FadeIn>
+          {/* Right Column: ReactBits Style Syntax Highlighted Code Card */}
+          <div className="lg:col-span-5">
+            <FadeIn delay={0.3}>
+              <div className="rounded-2xl border border-purple-500/30 bg-[#0c0817]/90 p-5 sm:p-6 shadow-2xl shadow-purple-500/15 relative overflow-hidden group">
+                <div className="flex items-center justify-between pb-4 border-b border-purple-500/20 font-mono text-xs text-slate-400">
+                  <div className="flex items-center gap-2">
+                    <Code className="w-4 h-4 text-purple-400" />
+                    <span className="font-bold text-purple-300">architect.config.ts</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleCopyCode}
+                    className="p-1.5 rounded bg-purple-950/50 hover:bg-purple-900/50 border border-purple-500/30 text-purple-300 transition-colors flex items-center gap-1.5 text-[11px]"
+                  >
+                    {copiedCode ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Terminal className="w-3.5 h-3.5" />}
+                    <span>{copiedCode ? 'COPIED' : 'COPY'}</span>
+                  </button>
+                </div>
 
-          {/* Action Button Bar */}
-          <FadeIn delay={0.55}>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 pt-4">
-              <Button
-                href="#creative-work"
-                variant="primary"
-                size="lg"
-                className="w-full sm:w-auto min-h-[52px] px-8 justify-center text-sm font-extrabold shadow-2xl shadow-cyan-500/25 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 hover:from-cyan-400 hover:to-purple-500 border-none"
-                icon={<ArrowRight className="w-5 h-5" />}
-              >
-                EXPLORE WORK →
-              </Button>
-
-              <button
-                type="button"
-                onClick={() => setContactModalOpen(true)}
-                className="w-full sm:w-auto min-h-[52px] px-8 rounded-xl border border-cyan-400/40 bg-slate-900/80 text-sm font-bold text-slate-200 hover:text-white hover:border-cyan-400 hover:bg-cyan-500/20 transition-all flex items-center justify-center gap-2.5 shadow-xl shadow-cyan-500/10"
-              >
-                <Terminal className="w-4 h-4 text-cyan-400" />
-                <span>START A PROJECT ↗</span>
-              </button>
-            </div>
-          </FadeIn>
-
-          {/* Bottom Proof Bar */}
-          <FadeIn delay={0.65}>
-            <div className="pt-8 flex items-center gap-6 sm:gap-10 border-t border-slate-800/80 text-xs font-mono text-slate-400">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-cyan-400" />
-                <span>VERIFIED COMMERCIAL DELIVERY</span>
+                <pre className="pt-4 font-mono text-xs sm:text-sm text-slate-300 leading-relaxed overflow-x-auto select-text">
+                  <code>
+                    <span className="text-purple-400">import</span> &#123; ProductArchitect &#125; <span className="text-purple-400">from</span> <span className="text-emerald-300">&apos;@/portfolio&apos;</span>;{'\n\n'}
+                    <span className="text-purple-400">const</span> architect = <span className="text-purple-400">new</span> <span className="text-cyan-300">ProductArchitect</span>(&#123;{'\n'}
+                    {'  '}name: <span className="text-emerald-300">&quot;Hari Om&quot;</span>,{'\n'}
+                    {'  '}role: <span className="text-emerald-300">&quot;UI/UX &amp; Web Engineering&quot;</span>,{'\n'}
+                    {'  '}performance: <span className="text-emerald-300">&quot;60 FPS Canvas&quot;</span>,{'\n'}
+                    {'  '}lighthouse: <span className="text-amber-300">100</span>,{'\n'}
+                    {'  '}stack: [<span className="text-emerald-300">&quot;Next.js&quot;</span>, <span className="text-emerald-300">&quot;React&quot;</span>, <span className="text-emerald-300">&quot;TypeScript&quot;</span>]{'\n'}
+                    &#125;);{'\n\n'}
+                    <span className="text-purple-400">export default</span> architect.<span className="text-cyan-300">build</span>();
+                  </code>
+                </pre>
               </div>
-              <div className="hidden sm:flex items-center gap-2 text-emerald-400 font-bold">
-                <span>100/100 LIGHTHOUSE PERFORMANCE</span>
-              </div>
-            </div>
-          </FadeIn>
+            </FadeIn>
+          </div>
         </motion.div>
       </section>
 
