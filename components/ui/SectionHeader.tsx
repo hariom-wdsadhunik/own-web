@@ -30,13 +30,13 @@ export function SectionHeader({
     >
       <div className="space-y-3 max-w-2xl">
         {(indexNumber || eyebrow) && (
-          <div className="flex items-center gap-3 font-mono text-xs tracking-widest text-blue-400 uppercase">
+          <div className="flex items-center gap-3 flex-wrap font-mono text-[11px] sm:text-xs tracking-widest text-blue-400 uppercase break-words">
             {indexNumber && <span className="text-gray-500 font-bold">{indexNumber}</span>}
             {indexNumber && eyebrow && <span className="text-gray-700">/</span>}
             {eyebrow && <span>{eyebrow}</span>}
           </div>
         )}
-        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight">
+        <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white leading-tight break-words">
           {title}
         </h2>
         {description && (

@@ -17,7 +17,7 @@ export function ProcessSection() {
         />
       </FadeIn>
 
-      <div className="relative border-l border-white/10 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-8 sm:space-y-12">
+      <div className="relative border-l border-white/10 ml-5 sm:ml-6 pl-6 sm:pl-10 space-y-8 sm:space-y-12">
         {PROCESS_STEPS.map((step, idx) => (
           <FadeIn key={step.number} delay={idx * 0.08}>
             <div className="relative group">

@@ -1,11 +1,10 @@
 import React from 'react';
-import Link from 'next/link';
 import { Wordmark } from '@/components/brand/Wordmark';
 import { CONTACT_INFO } from '@/content/contact';
 
 export function Footer() {
   return (
-    <footer className="py-12 border-t border-white/10 bg-[#07080a]">
+    <footer className="py-12 pb-24 md:pb-12 border-t border-white/10 bg-[#07080a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         <Wordmark variant="compact" size="sm" />
 
