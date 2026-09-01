@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 import { getPublicCreativeProjects } from '@/lib/projects';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Badge } from '@/components/ui/Badge';
@@ -39,7 +39,7 @@ export function CreativeProjectsSection() {
                   <span className="font-mono text-xs text-blue-400 font-bold tracking-widest block">
                     0{(idx + 1).toString()} / CREATIVE
                   </span>
-                  <h3 className="font-display text-3xl font-bold text-white tracking-tight">
+                  <h3 className="font-display text-2xl sm:text-4xl font-bold text-white tracking-tight">
                     <Link href={`/work/${project.slug}`}>{project.title}</Link>
                   </h3>
                 </div>
@@ -61,7 +61,7 @@ export function CreativeProjectsSection() {
                 {/* Mobile Editorial Context */}
                 <div className={`lg:col-span-5 space-y-3 sm:space-y-6 ${isEven ? '' : 'lg:order-1'}`}>
                   <div className="lg:hidden space-y-2">
-                    <span className="font-mono text-xs text-gray-400 uppercase tracking-widest block">
+                    <span className="font-mono text-xs text-gray-400 uppercase tracking-widest block font-bold">
                       {project.category}
                     </span>
                     <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
@@ -98,14 +98,26 @@ export function CreativeProjectsSection() {
                     </div>
                   </div>
 
-                  <div className="pt-2 sm:pt-3">
-                    <Link
-                      href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-2 font-display text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
-                    >
-                      <span>EXPLORE PROJECT</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
+                  <div className="flex items-center gap-4 flex-wrap pt-2 sm:pt-3">
+                    {project.liveUrl ? (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-display text-xs text-blue-400 hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
+                      >
+                        <span>VIEW LIVE →</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    ) : (
+                      <Link
+                        href={`/work/${project.slug}`}
+                        className="inline-flex items-center gap-2 font-display text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
+                      >
+                        <span>EXPLORE PROJECT</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
