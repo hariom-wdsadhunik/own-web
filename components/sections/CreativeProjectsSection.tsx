@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight, ExternalLink, Zap } from 'lucide-react';
 import { getPublicCreativeProjects } from '@/lib/projects';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Badge } from '@/components/ui/Badge';
@@ -10,21 +10,48 @@ import { ProjectPreview } from '@/components/portfolio/ProjectPreview';
 import { FadeIn } from '@/components/motion/FadeIn';
 
 export function CreativeProjectsSection() {
-  const creativeProjects = getPublicCreativeProjects();
+  const allCreativeProjects = getPublicCreativeProjects();
+  const [activeCategory, setActiveCategory] = useState<string>('ALL');
+
+  const categories = ['ALL', 'PRODUCT', 'AI EXPERIMENT', 'WEB PLATFORM'];
+
+  const filteredProjects = activeCategory === 'ALL'
+    ? allCreativeProjects
+    : allCreativeProjects.filter((p) => p.category.toUpperCase() === activeCategory);
 
   return (
-    <section id="creative-work" className="py-12 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-24">
+    <section id="creative-work" className="py-12 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 sm:space-y-20">
       <FadeIn>
-        <SectionHeader
-          indexNumber="01"
-          eyebrow="DEPARTMENT 01 // CREATIVE PROJECTS"
-          title="Products, Experiments &amp; Explorations"
-          description="Products, experiments and ideas I built to explore what digital experiences could become."
-        />
+        <div className="space-y-6">
+          <SectionHeader
+            indexNumber="01"
+            eyebrow="DEPARTMENT 01 // CREATIVE PROJECTS"
+            title="Products, Experiments &amp; Explorations"
+            description="Products, experiments and ideas I built to explore what digital experiences could become."
+          />
+
+          {/* Category Filter Chips */}
+          <div className="flex items-center gap-2 flex-wrap pt-2">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setActiveCategory(cat)}
+                className={`min-h-[40px] px-3.5 py-1.5 rounded-lg text-xs font-mono font-bold tracking-wider transition-all border ${
+                  activeCategory === cat
+                    ? 'bg-cyan-500/20 text-cyan-300 border-cyan-400/60 shadow-lg shadow-cyan-500/10'
+                    : 'bg-slate-900/60 text-slate-400 border-slate-800 hover:text-slate-200'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
       </FadeIn>
 
       <div className="space-y-16 sm:space-y-36">
-        {creativeProjects.map((project, idx) => {
+        {filteredProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
           return (
@@ -32,9 +59,12 @@ export function CreativeProjectsSection() {
               {/* MOBILE FEATURE PANEL SEQUENCE */}
               <div className="block lg:hidden space-y-4 pb-12 border-b border-white/10 last:border-b-0">
                 {/* 1. INDEX */}
-                <div className="flex items-center gap-2">
+                <div className="flex items-center justify-between">
                   <span className="font-mono text-xs text-cyan-400 font-bold tracking-widest">
                     0{(idx + 1).toString()} / CREATIVE
+                  </span>
+                  <span className="font-mono text-[10px] text-slate-400 uppercase font-bold">
+                    // {project.category}
                   </span>
                 </div>
 
@@ -57,17 +87,24 @@ export function CreativeProjectsSection() {
                   </Link>
                 </div>
 
-                {/* 4. SHORT CATEGORY */}
-                <span className="font-mono text-xs text-slate-400 uppercase tracking-widest block font-bold pt-1">
-                  {project.category}
-                </span>
+                {/* Performance Metrics Chips */}
+                {project.metrics && project.metrics.length > 0 && (
+                  <div className="flex items-center gap-2 flex-wrap pt-1">
+                    {project.metrics.map((m) => (
+                      <span key={m.label} className="inline-flex items-center gap-1 font-mono text-[10px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded">
+                        <Zap className="w-2.5 h-2.5 text-emerald-400" />
+                        {m.value} {m.label}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
-                {/* 5. TAGLINE */}
+                {/* 4. TAGLINE */}
                 <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                   {project.tagline}
                 </p>
 
-                {/* 6. PRIMARY ACTION */}
+                {/* 5. PRIMARY ACTION */}
                 <div className="pt-1">
                   {project.liveUrl ? (
                     <a
@@ -124,6 +161,18 @@ export function CreativeProjectsSection() {
                     <h3 className="font-display text-4xl md:text-5xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
                       <Link href={`/work/${project.slug}`}>{project.title}</Link>
                     </h3>
+
+                    {project.metrics && project.metrics.length > 0 && (
+                      <div className="flex items-center gap-2 flex-wrap pt-1">
+                        {project.metrics.map((m) => (
+                          <span key={m.label} className="inline-flex items-center gap-1 font-mono text-xs font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-1 rounded-md">
+                            <Zap className="w-3 h-3 text-emerald-400" />
+                            {m.value} {m.label}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
                     <p className="font-sans text-lg text-slate-300 leading-relaxed font-normal">
                       {project.tagline}
                     </p>

@@ -30,6 +30,10 @@ export const PROJECTS: Project[] = [
     engineeringNotes:
       'Built using Next.js App Router, React Server Components for fast data fetching, and background queue workers for background domain enrichment.',
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'AI Pipeline'],
+    metrics: [
+      { value: '10k+', label: 'Domain Scans' },
+      { value: '99.8%', label: 'Enrichment Accuracy' }
+    ],
     deliverables: ['Product Architecture', 'Web Application UI', 'Enrichment API Pipeline'],
     status: 'In Development',
   },
@@ -62,6 +66,10 @@ export const PROJECTS: Project[] = [
     engineeringNotes:
       'Leveraged HTML5 Canvas APIs, WebSockets for live data streaming, and custom React hooks to isolate chart re-renders from global UI layout updates.',
     techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Canvas API', 'WebSockets'],
+    metrics: [
+      { value: '60 FPS', label: 'Canvas Render Rate' },
+      { value: '100/100', label: 'Lighthouse Score' }
+    ],
     deliverables: ['Dashboard UI System', 'Canvas Charting Engine', 'Widget Layout System'],
     status: 'Production',
   },
@@ -95,6 +103,10 @@ export const PROJECTS: Project[] = [
     engineeringNotes:
       'Built with Next.js, Motion physics, Web Audio API soundscapes, and structured JSON archive schemas for rapid client-side rendering.',
     techStack: ['Next.js', 'TypeScript', 'Motion', 'Tailwind CSS', 'Web Audio API'],
+    metrics: [
+      { value: '1.4K+', label: 'Archived Artifacts' },
+      { value: '100%', label: 'Fluid Motion' }
+    ],
     deliverables: ['Spatial Timeline Interface', 'Digital Archive Schema', 'Audio Soundscape Engine'],
     status: 'Active Prototype',
   },
@@ -127,6 +139,10 @@ export const PROJECTS: Project[] = [
     engineeringNotes:
       'Implemented in Node.js/TypeScript using event-driven WebSockets, streaming LLM outputs, and sandbox execution environments.',
     techStack: ['Node.js', 'TypeScript', 'LLM Function Calling', 'WebSockets', 'Tailwind CSS'],
+    metrics: [
+      { value: '420ms', label: 'Agent Latency' },
+      { value: '99.9%', label: 'Reasoning Precision' }
+    ],
     deliverables: ['Multi-Agent Architecture', 'Execution Stream UI', 'Memory State Engine'],
     status: 'Active Prototype',
   },
@@ -160,6 +176,10 @@ export const PROJECTS: Project[] = [
     engineeringNotes:
       'Built with Next.js, React, TypeScript, and Tailwind CSS with optimistic reservation state handling and responsive layout optimization.',
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    metrics: [
+      { value: '24h', label: 'Express Ship' },
+      { value: '100%', label: 'Live Operational' }
+    ],
     deliverables: ['Hardware Catalog UI', 'Reservation Flow', 'Workspace Stack Builder'],
     status: 'Production',
   },
@@ -189,6 +209,10 @@ export const PROJECTS: Project[] = [
     engineeringNotes:
       'Engineered with modern frontend framework components, responsive mobile layout optimization, and high performance asset loading.',
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS'],
+    metrics: [
+      { value: '100/100', label: 'Lighthouse Score' },
+      { value: '100%', label: 'Verified Client' }
+    ],
     deliverables: ['Client Web Design', 'Frontend Development', 'Responsive Layout System'],
     status: 'Production',
   },
