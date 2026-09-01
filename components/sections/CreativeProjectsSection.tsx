@@ -13,7 +13,7 @@ export function CreativeProjectsSection() {
   const creativeProjects = getPublicCreativeProjects();
 
   return (
-    <section id="creative-work" className="py-16 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-24">
+    <section id="creative-work" className="py-12 sm:py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-24">
       <FadeIn>
         <SectionHeader
           indexNumber="01"
@@ -23,26 +23,28 @@ export function CreativeProjectsSection() {
         />
       </FadeIn>
 
-      <div className="space-y-20 sm:space-y-36">
+      <div className="space-y-16 sm:space-y-36">
         {creativeProjects.map((project, idx) => {
           const isEven = idx % 2 === 0;
 
           return (
             <FadeIn key={project.id} delay={0.1} className="group">
               {/* MOBILE FEATURE PANEL SEQUENCE */}
-              <div className="block lg:hidden space-y-5 pb-16 border-b border-white/10 last:border-b-0">
+              <div className="block lg:hidden space-y-4 pb-12 border-b border-white/10 last:border-b-0">
                 {/* 1. INDEX */}
-                <span className="font-mono text-xs text-blue-400 font-bold tracking-widest block">
-                  0{(idx + 1).toString()} / CREATIVE
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-xs text-cyan-400 font-bold tracking-widest">
+                    0{(idx + 1).toString()} / CREATIVE
+                  </span>
+                </div>
 
-                {/* 2. LARGE TITLE (32px - 44px) */}
-                <h3 className="font-display text-3xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
+                {/* 2. RESPONSIVE TITLE */}
+                <h3 className="font-display text-2xl sm:text-4xl font-bold text-white tracking-tight leading-tight">
                   <Link href={`/work/${project.slug}`}>{project.title}</Link>
                 </h3>
 
                 {/* 3. FEATURED VISUAL (100% Content Width) */}
-                <div className="pt-2">
+                <div className="pt-1">
                   <Link href={`/work/${project.slug}`} className="block group/media">
                     <ProjectPreview
                       media={project.heroImage}
@@ -56,23 +58,23 @@ export function CreativeProjectsSection() {
                 </div>
 
                 {/* 4. SHORT CATEGORY */}
-                <span className="font-mono text-xs text-gray-400 uppercase tracking-widest block font-bold pt-2">
+                <span className="font-mono text-xs text-slate-400 uppercase tracking-widest block font-bold pt-1">
                   {project.category}
                 </span>
 
-                {/* 5. ONE SHORT DESCRIPTION (Tagline only) */}
-                <p className="font-sans text-base text-gray-300 leading-relaxed font-normal">
+                {/* 5. TAGLINE */}
+                <p className="font-sans text-sm sm:text-base text-slate-300 leading-relaxed font-normal">
                   {project.tagline}
                 </p>
 
                 {/* 6. PRIMARY ACTION */}
-                <div className="pt-2">
+                <div className="pt-1">
                   {project.liveUrl ? (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-display text-xs text-blue-400 hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
+                      className="inline-flex items-center gap-2 font-display text-xs text-cyan-400 hover:text-cyan-300 transition-colors font-bold tracking-wider min-h-[44px]"
                     >
                       <span>VIEW LIVE →</span>
                       <ExternalLink className="w-4 h-4" />
@@ -80,7 +82,7 @@ export function CreativeProjectsSection() {
                   ) : (
                     <Link
                       href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-2 font-display text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
+                      className="inline-flex items-center gap-2 font-display text-xs text-cyan-400 group-hover:text-cyan-300 transition-colors font-bold tracking-wider min-h-[44px]"
                     >
                       <span>EXPLORE PROJECT</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -103,29 +105,29 @@ export function CreativeProjectsSection() {
                       category={project.category}
                       year={project.year}
                       status={project.status}
-                      className="w-full rounded-xl overflow-hidden transition-all duration-700 ease-out group-hover/media:scale-[1.02] group-hover/media:shadow-2xl group-hover/media:shadow-blue-500/10"
+                      className="w-full rounded-xl overflow-hidden transition-all duration-700 ease-out group-hover/media:scale-[1.02] group-hover/media:shadow-2xl group-hover/media:shadow-cyan-500/10"
                     />
                   </Link>
                 </div>
 
                 <div className={`col-span-5 space-y-6 ${isEven ? '' : 'order-1'}`}>
                   <div className="flex items-center gap-3 flex-wrap">
-                    <span className="font-mono text-xs text-blue-400 font-bold tracking-widest">
+                    <span className="font-mono text-xs text-cyan-400 font-bold tracking-widest">
                       0{(idx + 1).toString()}
                     </span>
                     <Badge variant="icy" dot>{project.status}</Badge>
                     <Badge variant="outline">{project.year}</Badge>
-                    <span className="font-mono text-xs text-gray-500 uppercase">// {project.category}</span>
+                    <span className="font-mono text-xs text-slate-400 uppercase">// {project.category}</span>
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="font-display text-4xl md:text-5xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight">
+                    <h3 className="font-display text-4xl md:text-5xl font-bold text-white group-hover:text-cyan-300 transition-colors tracking-tight">
                       <Link href={`/work/${project.slug}`}>{project.title}</Link>
                     </h3>
-                    <p className="font-sans text-lg text-gray-300 leading-relaxed font-normal">
+                    <p className="font-sans text-lg text-slate-300 leading-relaxed font-normal">
                       {project.tagline}
                     </p>
-                    <p className="font-sans text-sm text-gray-400 leading-relaxed line-clamp-3">
+                    <p className="font-sans text-sm text-slate-400 leading-relaxed line-clamp-3">
                       {project.summary}
                     </p>
                     <div className="flex flex-wrap gap-1.5 pt-2">
@@ -143,7 +145,7 @@ export function CreativeProjectsSection() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 font-display text-xs text-blue-400 hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
+                        className="inline-flex items-center gap-2 font-display text-xs text-cyan-400 hover:text-cyan-300 transition-colors font-bold tracking-wider min-h-[44px]"
                       >
                         <span>VIEW LIVE →</span>
                         <ExternalLink className="w-4 h-4" />
@@ -151,7 +153,7 @@ export function CreativeProjectsSection() {
                     ) : (
                       <Link
                         href={`/work/${project.slug}`}
-                        className="inline-flex items-center gap-2 font-display text-xs text-blue-400 group-hover:text-blue-300 transition-colors font-bold tracking-wider min-h-[44px]"
+                        className="inline-flex items-center gap-2 font-display text-xs text-cyan-400 group-hover:text-cyan-300 transition-colors font-bold tracking-wider min-h-[44px]"
                       >
                         <span>EXPLORE PROJECT</span>
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
